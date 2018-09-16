@@ -1,45 +1,48 @@
 ﻿@model MakePizza.Models.Ingrediente
-@{
-	ViewBag.Title = "CadastrarIngrediente";
-}
-<h2>CadastrarIngrediente</h2>
-@using (Html.BeginForm("CadastrarIngrediente","Ingrediente",FormMethod.Post))
-{
-	@Html.AntiForgeryToken()
 
-	<div class="form-horizontal">
-		<h4>Ingrediente</h4>
-		<hr />
-		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		<div class="form-group">
-			@Html.LabelFor(model => model.NomeIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.NomeIngrediente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.NomeIngrediente, "", new { @class = "text-danger" })
-			</div>
+<h2>CadastrarIngrediente</h2>
+@using (Html.BeginForm("CadastrarIngrediente", "Ingrediente", FormMethod.Post))
+{
+
+<div class="form-horizontal">
+	<h4>Ingrediente</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<div class="form-group">
+		@Html.LabelFor(model => model.NomeIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.NomeIngrediente, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.NomeIngrediente, "", new { @class = "text-danger" })
 		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.PrecoIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.PrecoIngrediente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.PrecoIngrediente, "", new { @class = "text-danger" })
-			</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.PrecoIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.PrecoIngrediente, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.PrecoIngrediente, "", new { @class = "text-danger" })
 		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.StatusIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				<div class="checkbox">
-					@Html.EditorFor(model => model.StatusIngrediente)
-					@Html.ValidationMessageFor(model => model.StatusIngrediente, "", new { @class = "text-danger" })
-				</div>
-			</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
+		<div class="col-sm-6">
+			@Html.DropDownListFor(model => model.CategoriaIngrediente, ViewBag.Categorias as SelectList)
 		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Cadastrar" class="btn btn-default" />
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.StatusIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			<div class="checkbox">
+				@Html.EditorFor(model => model.StatusIngrediente)
+				@Html.ValidationMessageFor(model => model.StatusIngrediente, "", new { @class = "text-danger" })
 			</div>
 		</div>
 	</div>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Cadastrar" class="btn btn-default" />
+		</div>
+	</div>
+</div>
 }
 <div>
 	@Html.ActionLink("Voltar para categoria", "CadastrarCategoria", "Categoria")

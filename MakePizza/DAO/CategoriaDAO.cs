@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,11 @@ namespace MakePizza.DAO
 				return true;
 			}
 			return false;
+		}
+
+		internal static List<Categoria> RetornarCategorias()
+		{
+			return contexto.Categorias.ToList();
 		}
 		#endregion
 

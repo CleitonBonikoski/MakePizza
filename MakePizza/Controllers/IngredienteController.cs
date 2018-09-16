@@ -16,6 +16,9 @@ namespace MakePizza.Controllers
 		#region CadastrarIngrediente()
 		public ActionResult CadastrarIngrediente()
 		{
+			ViewBag.Categorias =
+				new SelectList(CategoriaDAO.RetornarCategorias(),
+				"IdCategoria", "NomeCategoria");
 			return View();
 		}
 		#endregion
