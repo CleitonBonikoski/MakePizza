@@ -22,12 +22,12 @@ namespace MakePizza.Models
 		[Required(ErrorMessage = "Nome Obrigatório ")]
 		public string NomeIngrediente { get; set; }
 
-		[Display(Name = "Nome Ingrediente")]
+		[Display(Name = "Preço Ingrediente")]
 		[Required(ErrorMessage = "Nome Obrigatório ")]
 		public double PrecoIngrediente { get; set; }
 
 		//Valores válidos para Status : Disponivel e Indisponível.
-		[Display(Name = "Nome Cliente")]
+		[Display(Name = "Status Ingrediente")]
 		public bool StatusIngrediente { get; set; }
 
 		#endregion
