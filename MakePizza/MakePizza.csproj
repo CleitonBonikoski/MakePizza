@@ -101,6 +101,17 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Cliente\Home.cshtml" />
+    <Content Include="Views\Categoria\Home.cshtml" />
+    <Content Include="Views\Ingrediente\Home.cshtml" />
+    <Content Include="Views\Pedido\Home.cshtml" />
+    <Content Include="Views\Pizza\Home.cshtml" />
+    <Content Include="Views\Pizza\MostrarPizza.cshtml" />
+    <Content Include="Views\Ingrediente\CadastrarIngrediente.cshtml" />
+    <Content Include="Views\Cliente\CadastrarCliente.cshtml" />
+    <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
