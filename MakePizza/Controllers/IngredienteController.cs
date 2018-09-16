@@ -29,7 +29,7 @@ namespace MakePizza.Controllers
 		public ActionResult CadastrarIngrediente(Ingrediente ingrediente)
 		{
 			if (IngredienteDAO.CadastrarIngrediente(ingrediente))
-				RedirectToAction("Home","Pizza");
+				return RedirectToAction("CadastrarPizza", "Pizza");
 
 			return View();
 		}

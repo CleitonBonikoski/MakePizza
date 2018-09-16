@@ -145,6 +145,7 @@
     <Content Include="Views\Cliente\CadastrarCliente.cshtml" />
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <Content Include="Views\EscolhaCadastro\Home.cshtml" />
+    <Content Include="Views\Pizza\CadastrarPizza.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
