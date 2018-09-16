@@ -10,17 +10,32 @@ namespace MakePizza.Controllers
 {
 	public class ClienteController : Controller
 	{
-		// GET: Cliente
+		#region Home()
 		public ActionResult Home()
 		{
 			return View();
 		}
+		#endregion
 
+		#region Login(Cliente)
+		[HttpPost]
+		public ActionResult Login(Cliente cliente)
+		{
+			if(ClienteDAO.BuscarClientePorEmail(cliente) != null)
+				return RedirectToAction("Home", "Categoria");
+				
+			return RedirectToAction("Home", "Cliente");
+		}
+		#endregion
+
+		#region CadastrarCliente()
 		public ActionResult CadastrarCliente()
 		{
 			return View();
 		}
+		#endregion
 
+		#region CadastrarCliente(Cliente)
 		[HttpPost]
 		public ActionResult CadastrarCliente(Cliente cliente)
 		{
@@ -29,5 +44,6 @@ namespace MakePizza.Controllers
 
 			return View();
 		}
+		#endregion
 	}
 }

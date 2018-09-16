@@ -8,8 +8,11 @@ namespace MakePizza.DAO
 {
 	public class ClienteDAO
 	{
+		#region Contexto
 		private static Contexto contexto = SingletonContexto.GetInstance();
+		#endregion
 
+		#region CadastrarCliente(Cliente)
 		public static bool CadastrarCliente(Cliente cliente)
 		{
 			if(BuscarClientePorNome(cliente) == null)
@@ -20,11 +23,22 @@ namespace MakePizza.DAO
 			}
 			return false;
 		}
+		#endregion
 
+		#region BuscarClientePorEmail(Cliente)
+		public static Cliente BuscarClientePorEmail(Cliente cliente)
+		{
+			return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(cliente.EmailCliente) &&
+													_.SenhaCliente.Equals(cliente.SenhaCliente));
+		}
+		#endregion
+
+		#region BuscarClientePorNome(Cliente)
 		public static Cliente BuscarClientePorNome(Cliente cliente)
 		{
 			return contexto.Clientes.FirstOrDefault(_ => _.NomeCliente.Equals(cliente.NomeCliente) &&
 													_.SenhaCliente.Equals(cliente.SenhaCliente));
 		}
+		#endregion
 	}
 }

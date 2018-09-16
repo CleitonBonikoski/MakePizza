@@ -1,12 +1,11 @@
 ﻿@model MakePizza.Models.Cliente
 @{
-				/**/
 
-				ViewBag.Title = "Home";
+	ViewBag.Title = "Home";
 }
 
 <div>
-	@using (Html.BeginForm("Home", "Cliente",
+	@using (Html.BeginForm("Login", "Cliente",
 						FormMethod.Post,
 						new
 						{
