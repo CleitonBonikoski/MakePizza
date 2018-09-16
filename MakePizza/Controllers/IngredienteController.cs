@@ -9,7 +9,7 @@ namespace MakePizza.Controllers
     public class IngredienteController : Controller
     {
         // GET: Ingrediente
-        public ActionResult Index()
+        public ActionResult Home()
         {
             return View();
         }

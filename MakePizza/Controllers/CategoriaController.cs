@@ -9,7 +9,7 @@ namespace MakePizza.Controllers
     public class CategoriaController : Controller
     {
         // GET: Categoria
-        public ActionResult Index()
+        public ActionResult Home()
         {
             return View();
         }
