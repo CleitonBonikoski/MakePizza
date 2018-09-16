@@ -6,12 +6,17 @@ using System.Web.Mvc;
 
 namespace MakePizza.Controllers
 {
-    public class ClienteController : Controller
-    {
-        // GET: Cliente
-        public ActionResult Home()
-        {
-            return View();
-        }
-    }
+	public class ClienteController : Controller
+	{
+		// GET: Cliente
+		public ActionResult Home()
+		{
+			return View();
+		}
+
+		public ActionResult CadastrarCliente()
+		{
+			return View();
+		}
+	}
 }

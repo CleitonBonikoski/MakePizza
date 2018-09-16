@@ -6,12 +6,17 @@ using System.Web.Mvc;
 
 namespace MakePizza.Controllers
 {
-    public class PizzaController : Controller
-    {
-        // GET: Pizza
-        public ActionResult Home()
-        {
-            return View();
-        }
-    }
+	public class PizzaController : Controller
+	{
+		// GET: Pizza
+		public ActionResult Home()
+		{
+			return View();
+		}
+
+		public ActionResult MostrarPizza()
+		{
+			return View();
+		}
+	}
 }
