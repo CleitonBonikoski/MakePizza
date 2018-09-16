@@ -102,6 +102,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EscolhaCadastroController.cs" />
     <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PizzaController.cs" />
@@ -143,6 +144,7 @@
     <Content Include="Views\Ingrediente\CadastrarIngrediente.cshtml" />
     <Content Include="Views\Cliente\CadastrarCliente.cshtml" />
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
+    <Content Include="Views\EscolhaCadastro\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

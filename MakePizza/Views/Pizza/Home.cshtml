@@ -1,7 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Home";
+	ViewBag.Title = "Home - Pizza";
 }
 
-<h2>Home</h2>
+<h2>@ViewBag.Title</h2>
 
+<div>
+	<fieldset>
+
+		<legend> O que deseja Fazer ? </legend>
+
+		<div class="form-group form-inline my-2 my-lg-0">
+			@Html.ActionLink("Cadastrar", "CadastrarCliente", "Cliente", new { @class = "btn btn-success" })
+		</div>
+
+	</fieldset>
+</div>

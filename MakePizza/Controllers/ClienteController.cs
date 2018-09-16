@@ -22,7 +22,7 @@ namespace MakePizza.Controllers
 		public ActionResult Login(Cliente cliente)
 		{
 			if(ClienteDAO.BuscarClientePorEmail(cliente) != null)
-				return RedirectToAction("Home", "Categoria");
+				return RedirectToAction("Home", "EscolhaCadastro");
 				
 			return RedirectToAction("Home", "Cliente");
 		}
