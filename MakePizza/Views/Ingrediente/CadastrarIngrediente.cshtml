@@ -1,5 +1,7 @@
 ﻿@model MakePizza.Models.Ingrediente
-
+@{ 
+	SelectList lstCategorias = ViewBag.Categorias;
+}
 <h2>CadastrarIngrediente</h2>
 @using (Html.BeginForm("CadastrarIngrediente", "Ingrediente", FormMethod.Post))
 {
@@ -25,7 +27,7 @@
 	<div class="form-group">
 		@Html.LabelFor(model => model.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
 		<div class="col-sm-6">
-			@Html.DropDownListFor(model => model.CategoriaIngrediente, ViewBag.Categorias as SelectList)
+			@Html.DropDownListFor(model => model.CategoriaIngrediente.IdCategoria, lstCategorias)
 		</div>
 	</div>
 	<div class="form-group">

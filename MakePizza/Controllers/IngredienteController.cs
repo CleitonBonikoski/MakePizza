@@ -27,9 +27,13 @@ namespace MakePizza.Controllers
 		[HttpPost]
 		public ActionResult CadastrarIngrediente(Ingrediente ingrediente)
 		{
-			if (IngredienteDAO.CadastrarIngrediente(ingrediente))
-				return RedirectToAction("CadastrarPizza", "Pizza");
+			if(ingrediente.CategoriaIngrediente.IdCategoria > 0)
+			{
+				ingrediente.CategoriaIngrediente = CategoriaDAO.BuscarCategoriaPorId(ingrediente.CategoriaIngrediente.IdCategoria);
 
+				if (IngredienteDAO.CadastrarIngrediente(ingrediente))
+					return RedirectToAction("CadastrarPizza", "Pizza");
+			}
 			return View();
 		}
 		#endregion

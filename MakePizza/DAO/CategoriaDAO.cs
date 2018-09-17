@@ -24,10 +24,19 @@ namespace MakePizza.DAO
 			}
 			return false;
 		}
+		#endregion
 
-		internal static List<Categoria> RetornarCategorias()
+		#region RetornarCategorias()
+		public static List<Categoria> RetornarCategorias()
 		{
 			return contexto.Categorias.ToList();
+		}
+		#endregion
+
+		#region  BuscarCategoriaPorId(int?)
+		public static Categoria BuscarCategoriaPorId(int? idCategoria)
+		{
+			return contexto.Categorias.FirstOrDefault(_ => _.IdCategoria == idCategoria);
 		}
 		#endregion
 
