@@ -96,6 +96,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +117,7 @@
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\IngredienteDAO.cs" />
+    <Compile Include="DAO\Ingrediente_PizzaDAO.cs" />
     <Compile Include="DAO\PedidoDAO.cs" />
     <Compile Include="DAO\PizzaDAO.cs" />
     <Compile Include="DAO\SingletonContexto.cs" />
@@ -118,6 +127,10 @@
     <Compile Include="Migrations\201809181254497_MakeDb.cs" />
     <Compile Include="Migrations\201809181254497_MakeDb.Designer.cs">
       <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809181415151_AddUP.cs" />
+    <Compile Include="Migrations\201809181415151_AddUP.Designer.cs">
+      <DependentUpon>201809181415151_AddUP.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -146,6 +159,8 @@
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <Content Include="Views\EscolhaCadastro\Home.cshtml" />
     <Content Include="Views\Pizza\CadastrarPizza.cshtml" />
+    <Content Include="Views\Pizza\AddIngredientesNaPizza.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +174,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809181254497_MakeDb.resx">
       <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809181415151_AddUP.resx">
+      <DependentUpon>201809181415151_AddUP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

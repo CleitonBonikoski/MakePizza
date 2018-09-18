@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,6 +27,16 @@ namespace MakePizza.DAO
 		public static Ingrediente BuscarIngredientePorNome(Ingrediente ingrediente)
 		{
 			return contexto.Ingredientes.FirstOrDefault(_ => _.NomeIngrediente.Equals(ingrediente.NomeIngrediente));
+		}
+
+		public static Ingrediente BuscarIngredientePorId(int? idIngrediente)
+		{
+			return contexto.Ingredientes.Find(idIngrediente);	
+		}
+
+		internal static IEnumerable RetornarIngredientes()
+		{
+			return contexto.Ingredientes.ToList();
 		}
 	}
 }

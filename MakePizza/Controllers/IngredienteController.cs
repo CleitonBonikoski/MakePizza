@@ -23,7 +23,7 @@ namespace MakePizza.Controllers
 		}
 		#endregion
 
-		#region CadastrarIngrediente()
+		#region CadastrarIngrediente(Ingrediente)
 		[HttpPost]
 		public ActionResult CadastrarIngrediente(Ingrediente ingrediente)
 		{
@@ -32,7 +32,7 @@ namespace MakePizza.Controllers
 				ingrediente.CategoriaIngrediente = CategoriaDAO.BuscarCategoriaPorId(ingrediente.CategoriaIngrediente.IdCategoria);
 
 				if (IngredienteDAO.CadastrarIngrediente(ingrediente))
-					return RedirectToAction("CadastrarPizza", "Pizza");
+					return RedirectToAction("AddIngredientesNaPizza", "Pizza");
 			}
 			return View();
 		}

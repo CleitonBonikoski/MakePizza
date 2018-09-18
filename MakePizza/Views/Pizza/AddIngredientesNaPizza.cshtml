@@ -1,0 +1,38 @@
+﻿@model MakePizza.Models.Ingrediente_Pizza
+
+@{
+	SelectList lstIngredientes = ViewBag.Ingredientes;
+}
+
+<h2>AddIngredientesNaPizza</h2>
+
+
+@using (Html.BeginForm("AddIngredientesNaPizza","Pizza",FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Ingrediente_Pizza</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.ingredientePizza.NomeIngrediente, new { @class = "control-label col-sm-2" })
+			<div class="col-sm-6">
+				@Html.DropDownListFor(model => model.ingredientePizza.IdIngrediente, lstIngredientes)
+			</div>
+			<br />
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

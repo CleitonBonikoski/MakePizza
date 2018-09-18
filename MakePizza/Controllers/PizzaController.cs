@@ -29,7 +29,7 @@ namespace MakePizza.Controllers
 		public ActionResult CadastrarPizza(Pizza pizza)
 		{
 			if (PizzaDAO.CadastrarPizza(pizza))
-				return RedirectToAction("Home","Pedido");
+				return RedirectToAction("Home", "Pedido");
 
 			return View();
 		}
@@ -40,6 +40,36 @@ namespace MakePizza.Controllers
 		{
 			return View();
 		}
-		#endregion 
+		#endregion
+
+		#region AddIngredientesNaPizza()
+		public ActionResult AddIngredientesNaPizza()
+		{
+			ViewBag.Ingredientes =
+				new SelectList(IngredienteDAO.RetornarIngredientes(),
+				"IdIngrediente", "NomeIngrediente");
+			return View();
+		}
+		#endregion
+
+		#region AddIngredientesNaPizza(Pizza)
+		[HttpPost]
+		public ActionResult AddIngredientesNaPizza(int? IdIngrediente)
+		{
+			if (IdIngrediente != null)
+			{
+				Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(IdIngrediente);
+				Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
+				{
+					ingredientePizza = ingrediente
+				};
+				Ingrediente_PizzaDAO.CadastrarIngredientePizza(ingrediente_Pizza);
+				return View();
+
+			}
+			return RedirectToAction("Home", "Pizza");
+		}
+		#endregion
+
 	}
 }
