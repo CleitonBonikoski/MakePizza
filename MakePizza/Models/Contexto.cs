@@ -14,6 +14,7 @@ namespace MakePizza.Models
 		public DbSet<Pedido> Pedidos { get; set; }
 		public DbSet<Pizza> Pizzas { get; set; }
 		public DbSet<Ingrediente> Ingredientes { get; set; }
+		public DbSet<Ingrediente_Pizza> Ingredientes_Pizza { get; set; }
 		public DbSet<Categoria> Categorias { get; set; }
 
 	}

@@ -115,9 +115,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809161800009_MAKEDB.cs" />
-    <Compile Include="Migrations\201809161800009_MAKEDB.Designer.cs">
-      <DependentUpon>201809161800009_MAKEDB.cs</DependentUpon>
+    <Compile Include="Migrations\201809181254497_MakeDb.cs" />
+    <Compile Include="Migrations\201809181254497_MakeDb.Designer.cs">
+      <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -157,8 +157,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809161800009_MAKEDB.resx">
-      <DependentUpon>201809161800009_MAKEDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809181254497_MakeDb.resx">
+      <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

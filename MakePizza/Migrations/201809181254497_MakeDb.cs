@@ -3,7 +3,7 @@ namespace MakePizza.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class MAKEDB : DbMigration
+    public partial class MakeDb : DbMigration
     {
         public override void Up()
         {
