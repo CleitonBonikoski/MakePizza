@@ -1,7 +1,42 @@
-﻿
+﻿@using MakePizza.Models
+@model List<Categoria>
+
 @{
     ViewBag.Title = "Home";
 }
 
-<h2>Home</h2>
+<div>
+    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
 
+    <table class="table table-hover table-striped"
+           style="margin-top:30px">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Disponibilidade</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Categoria categoria in Model)
+        {
+            <tr>
+                <td>@categoria.NomeCategoria</td>
+                <td>@categoria.DescricaoCategoria</td>
+                <td>@categoria.StatusCategoria</td>
+
+                <td>
+                    @Html.ActionLink("Remover", "RemoverCategoria", "Categoria",
+                                 new { id = categoria.IdCategoria }, null)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Alterar", "AlterarCategoria", "Categoria",
+                                 new { id = categoria.IdCategoria }, null)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <p>Dados atualizados às: <b> @DateTime.Now </b></p>
+
+</div>
