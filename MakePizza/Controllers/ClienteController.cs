@@ -1,5 +1,6 @@
 ﻿using MakePizza.DAO;
 using MakePizza.Models;
+using MakePizza.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,11 @@ namespace MakePizza.Controllers
 		{
 			try
 			{
-				Cliente clienteNovo = ClienteDAO.BuscarClientePorEmail(cliente);
+				Cliente clienteLogado = ClienteDAO.BuscarClientePorEmail(cliente);
+				if (clienteLogado != null)
+					Sessao.CriarSessaoCliente();
 
-				if (clienteNovo.AdminCliente)
+				if (clienteLogado.AdminCliente)
 					return RedirectToAction("Home", "EscolhaCadastro");
 
 				return RedirectToAction("AddIngredientesNaPizza", "Pizza");

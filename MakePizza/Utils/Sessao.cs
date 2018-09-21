@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MakePizza.Utils
 {
-	public class Session
+	public class Sessao
 	{
 		private static Contexto contexto = SingletonContexto.GetInstance();
 

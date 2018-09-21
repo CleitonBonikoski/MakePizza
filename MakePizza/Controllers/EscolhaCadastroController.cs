@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakePizza.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,15 @@ namespace MakePizza.Controllers
 {
     public class EscolhaCadastroController : Controller
     {
-        // GET: EscolhaCadastrar
-        public ActionResult Home()
+		private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+
+		// GET: EscolhaCadastrar
+		public ActionResult Home()
         {
-            return View();
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
+
+			return View();
         }
     }
 }

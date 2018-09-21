@@ -1,22 +1,31 @@
 ﻿using MakePizza.DAO;
 using MakePizza.Models;
+using MakePizza.Utils;
 using System.Web.Mvc;
 
 namespace MakePizza.Controllers
 {
     public class IngredienteController : Controller
     {
-        #region Home()
-        public ActionResult Home()
+		private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+
+		#region Home()
+		public ActionResult Home()
         {
-            return View(IngredienteDAO.RetornarIngredientes());
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
+
+			return View(IngredienteDAO.RetornarIngredientes());
         }
         #endregion
 
         #region CadastrarIngrediente()
         public ActionResult CadastrarIngrediente()
         {
-            ViewBag.Categorias =
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
+
+			ViewBag.Categorias =
                 new MultiSelectList(CategoriaDAO.RetornarCategorias(),
                 "IdCategoria", "NomeCategoria");
             return View();
@@ -60,7 +69,10 @@ namespace MakePizza.Controllers
         #region AlterarIngrediente(id)
         public ActionResult AlterarIngrediente(int id)
         {
-            return View(IngredienteDAO.BuscarIngredientePorId(id));
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
+
+			return View(IngredienteDAO.BuscarIngredientePorId(id));
         }
         #endregion
 
