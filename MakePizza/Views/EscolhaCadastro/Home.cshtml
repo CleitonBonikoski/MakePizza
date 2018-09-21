@@ -1,13 +1,13 @@
 ﻿
 @{
-	ViewBag.Title = "Escolha de Cadastro";
+	ViewBag.Title = "Gerenciar";
 }
 
 <h2>@ViewBag.Title</h2>
 <div>
-	@Html.ActionLink("Cliente", "CadastrarCliente", "Cliente")
-	@Html.ActionLink("Categoria", "CadastrarCategoria", "Categoria")
-	@Html.ActionLink("Ingrediente", "CadastrarIngrediente", "Ingrediente")
-	@Html.ActionLink("Add Ingrediente na Pizza", "AddIngredientesNaPizza", "Pizza")
+	@Html.ActionLink("Cadastrar Clientes", "CadastrarCliente", "Cliente") <br />
+	@Html.ActionLink("Mostrar Categorias", "Home", "Categoria") <br />
+	@Html.ActionLink("Mostrar Ingrediente", "Home", "Ingrediente") <br />
+	@Html.ActionLink("Add Ingrediente na Pizza", "AddIngredientesNaPizza", "Pizza") <br />
 
 </div>

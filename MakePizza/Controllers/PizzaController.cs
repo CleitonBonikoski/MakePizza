@@ -10,6 +10,7 @@ namespace MakePizza.Controllers
 {
 	public class PizzaController : Controller
 	{
+		//private static List<IN>
 		#region Home()
 		public ActionResult Home()
 		{
@@ -54,11 +55,14 @@ namespace MakePizza.Controllers
 
 		#region AddIngredientesNaPizza(Pizza)
 		[HttpPost]
-		public ActionResult AddIngredientesNaPizza(Ingrediente ingrediente)
+		public ActionResult AddIngredientesNaPizza(int? Ingredientes)
 		{
-			if (ingrediente != null)
+			ViewBag.Ingredientes =
+				new SelectList(IngredienteDAO.RetornarIngredientes(),
+				"IdIngrediente", "NomeIngrediente");
+			if (Ingredientes != null)
 			{
-				//Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(IdIngrediente);
+				Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(Ingredientes);
 				Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
 				{
 					ingredientePizza = ingrediente
