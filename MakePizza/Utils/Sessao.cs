@@ -14,7 +14,9 @@ namespace MakePizza.Utils
 		#region Session
 		private static string CLIENTE_SESSION = "IdCliente";
 
-		private static string PEDIDO_SESSION = "GuidPedido";
+		private static string INGREDIENTE_PIZZA_SESSION = "GuidPizza";
+
+		private static string PIZZA_PEDIDO_SESSION = "GuidPedido";
 		#endregion
 
 		#region  CriarSessaoCliente()
@@ -29,15 +31,27 @@ namespace MakePizza.Utils
 		}
 		#endregion
 
+		#region  CriarSessaoPizza()
+		public static string CriarSessaoPizza()
+		{
+			if (HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] == null)
+			{
+				Guid guid = Guid.NewGuid();
+				HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] = guid;
+			}
+			return HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION].ToString();
+		}
+		#endregion
+
 		#region  CriarSessaoPedido()
 		public static string CriarSessaoPedido()
 		{
-			if (HttpContext.Current.Session[PEDIDO_SESSION] == null)
+			if (HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] == null)
 			{
 				Guid guid = Guid.NewGuid();
-				HttpContext.Current.Session[PEDIDO_SESSION] = guid;
+				HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] = guid;
 			}
-			return HttpContext.Current.Session[PEDIDO_SESSION].ToString();
+			return HttpContext.Current.Session[PIZZA_PEDIDO_SESSION].ToString();
 		}
 		#endregion
 
@@ -51,13 +65,23 @@ namespace MakePizza.Utils
 		}
 		#endregion
 
+		#region ValidarSessaoPizza()
+		public static string ValidarSessaoPizza()
+		{
+			if (HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] == null)
+				return null;
+
+			return HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION].ToString();
+		}
+		#endregion
+
 		#region ValidarSessaoPedido()
 		public static string ValidarSessaoPedido()
 		{
-			if (HttpContext.Current.Session[PEDIDO_SESSION] == null)
+			if (HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] == null)
 				return null;
 
-			return HttpContext.Current.Session[PEDIDO_SESSION].ToString();
+			return HttpContext.Current.Session[PIZZA_PEDIDO_SESSION].ToString();
 		}
 		#endregion
 

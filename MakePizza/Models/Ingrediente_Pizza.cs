@@ -17,6 +17,8 @@ namespace MakePizza.Models
 
 		public Ingrediente ingredientePizza { get; set; }
 
+		public string GuidPizza { get; set; }
+
 		#endregion
 	}
 }

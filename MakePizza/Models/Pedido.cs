@@ -32,6 +32,8 @@ namespace MakePizza.Models
 		[Required(ErrorMessage = "Preço Total Obrigatório ")]
 		public double PrecoTotalPedido { get; set; }
 
+		public string GuidPedido { get; set; }		
+
 		#endregion
 	}
 }

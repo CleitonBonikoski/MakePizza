@@ -7,13 +7,13 @@ namespace MakePizza.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateMakePizzaDB : IMigrationMetadata
+    public sealed partial class CriateDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateMakePizzaDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriateDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809181853006_CreateMakePizzaDB"; }
+            get { return "201809211425289_CriateDB"; }
         }
         
         string IMigrationMetadata.Source

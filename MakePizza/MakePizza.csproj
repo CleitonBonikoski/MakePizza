@@ -124,9 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809181853006_CreateMakePizzaDB.cs" />
-    <Compile Include="Migrations\201809181853006_CreateMakePizzaDB.Designer.cs">
-      <DependentUpon>201809181853006_CreateMakePizzaDB.cs</DependentUpon>
+    <Compile Include="Migrations\201809211425289_CriateDB.cs" />
+    <Compile Include="Migrations\201809211425289_CriateDB.Designer.cs">
+      <DependentUpon>201809211425289_CriateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -171,8 +171,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809181853006_CreateMakePizzaDB.resx">
-      <DependentUpon>201809181853006_CreateMakePizzaDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809211425289_CriateDB.resx">
+      <DependentUpon>201809211425289_CriateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
