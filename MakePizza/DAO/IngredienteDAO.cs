@@ -35,9 +35,9 @@ namespace MakePizza.DAO
 			return contexto.Ingredientes.Find(idIngrediente);	
 		}
 
-		internal static IEnumerable RetornarIngredientes()
+		public static List<Ingrediente> RetornarIngredientes()
 		{
-			return contexto.Ingredientes.ToList();
+			return contexto.Ingredientes.Include("CategoriaIngrediente").ToList();
 		}
 
         internal static bool AlterarIngrediente(Ingrediente ingredienteOriginal)
