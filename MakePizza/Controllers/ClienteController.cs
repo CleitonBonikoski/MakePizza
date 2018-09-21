@@ -21,10 +21,19 @@ namespace MakePizza.Controllers
 		[HttpPost]
 		public ActionResult Login(Cliente cliente)
 		{
-			if(ClienteDAO.BuscarClientePorEmail(cliente) != null)
-				return RedirectToAction("Home", "EscolhaCadastro");
-				
-			return RedirectToAction("Home", "Cliente");
+			try
+			{
+				Cliente clienteNovo = ClienteDAO.BuscarClientePorEmail(cliente);
+
+				if (clienteNovo.AdminCliente)
+					return RedirectToAction("Home", "EscolhaCadastro");
+
+				return RedirectToAction("AddIngredientesNaPizza", "Pizza");
+			}
+			catch (Exception)
+			{
+				return RedirectToAction("Home", "Cliente");
+			}
 		}
 		#endregion
 

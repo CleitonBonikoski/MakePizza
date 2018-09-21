@@ -124,13 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809181254497_MakeDb.cs" />
-    <Compile Include="Migrations\201809181254497_MakeDb.Designer.cs">
-      <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809181415151_AddUP.cs" />
-    <Compile Include="Migrations\201809181415151_AddUP.Designer.cs">
-      <DependentUpon>201809181415151_AddUP.cs</DependentUpon>
+    <Compile Include="Migrations\201809181853006_CreateMakePizzaDB.cs" />
+    <Compile Include="Migrations\201809181853006_CreateMakePizzaDB.Designer.cs">
+      <DependentUpon>201809181853006_CreateMakePizzaDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -162,6 +158,7 @@
     <Content Include="Views\Pizza\AddIngredientesNaPizza.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
+    <Content Include="Views\Ingrediente\AlterarIngrediente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,11 +170,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809181254497_MakeDb.resx">
-      <DependentUpon>201809181254497_MakeDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809181415151_AddUP.resx">
-      <DependentUpon>201809181415151_AddUP.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809181853006_CreateMakePizzaDB.resx">
+      <DependentUpon>201809181853006_CreateMakePizzaDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

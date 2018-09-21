@@ -23,12 +23,6 @@
                 <td>@categoria.NomeCategoria</td>
                 <td>@categoria.DescricaoCategoria</td>
                 <td>@categoria.StatusCategoria</td>
-
-                <td>
-                    @Html.ActionLink("Remover", "RemoverCategoria", "Categoria",
-                                 new { id = categoria.IdCategoria }, null)
-                </td>
-
                 <td>
                     @Html.ActionLink("Alterar", "AlterarCategoria", "Categoria",
                                  new { id = categoria.IdCategoria }, null)

@@ -4,22 +4,25 @@
 	SelectList lstIngredientes = ViewBag.Ingredientes;
 }
 
-@using (Html.BeginForm("AddIngredientesNaPizza","Pizza",FormMethod.Post))
+@using (Html.BeginForm())
 {
-	@Html.AntiForgeryToken()
-
 	<div class="form-horizontal">
-		<h>Ingrediente_Pizza</h>
+		<h>AddIngredientesNaPizza</h>
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.ingredientePizza.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
+			@*@Html.LabelFor(model => model.ingredientePizza.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
 			<div class="col-sm-6">
 				@Html.DropDownListFor(model => model.ingredientePizza.IdIngrediente, lstIngredientes)
+			</div>*@
+			@Html.LabelFor(model => model.ingredientePizza , new { @class = "control-label col-sm-2" })
+			<div class="col-sm-6">
+				@Html.DropDownListFor(model => model.ingredientePizza.IdIngrediente , lstIngredientes)
 			</div>
 			<br />
 			<div class="col-md-offset-2 col-md-10">
+				@*@Html.ActionLink("Cadastrar", "AddIngredientesNaPizza" , "Pizza" , new { IdIngrediente = @Model.IdIngrediente_Pizza}, null )*@
 				<input type="submit" value="Create" class="btn btn-default" />
 			</div>
 		</div>

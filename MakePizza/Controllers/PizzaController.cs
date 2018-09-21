@@ -54,11 +54,11 @@ namespace MakePizza.Controllers
 
 		#region AddIngredientesNaPizza(Pizza)
 		[HttpPost]
-		public ActionResult AddIngredientesNaPizza(int? IdIngrediente)
+		public ActionResult AddIngredientesNaPizza(Ingrediente ingrediente)
 		{
-			if (IdIngrediente != null)
+			if (ingrediente != null)
 			{
-				Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(IdIngrediente);
+				//Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(IdIngrediente);
 				Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
 				{
 					ingredientePizza = ingrediente

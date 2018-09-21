@@ -17,6 +17,7 @@ namespace MakePizza.DAO
 		{
 			if(BuscarClientePorNome(cliente) == null)
 			{
+				cliente.AdminCliente = false;
 				contexto.Clientes.Add(cliente);
 				contexto.SaveChanges();
 				return true;
