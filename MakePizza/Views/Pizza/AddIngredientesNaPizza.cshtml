@@ -1,6 +1,12 @@
-﻿@model MakePizza.Models.Ingrediente
+﻿@using MakePizza.Models
 
-@using (Html.BeginForm("AddIngredientesNaPizza","Pizza",FormMethod.Post))
+@model MakePizza.Models.Ingrediente
+
+@{
+	List<Ingrediente> Ingredientes = ViewBag.Ingredientes;
+}
+
+@using (Html.BeginForm("AddIngredientesNaPizza", "Pizza", FormMethod.Post))
 {
 	<div class="form-horizontal">
 		<h>AddIngredientesNaPizza</h>
@@ -8,28 +14,14 @@
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 		<div class="form-group">
-
-			@*<ul class="checkBoxList" name="teste">
-				<li>
-					<input type="checkbox" value="3424" name="asdasdasdasd" id="Products0">
-					<label for="Products0">iPod touch 3rd Generation</label>
-				</li>
-				<li>
-					<input type="checkbox" value="3123" name="asdasdasdasd" id="Products1">
-					<label for="Products1">Creative Zen</label>
-				</li>
-			</ul>*@
-			@*@Html.LabelFor(model => model.ingredientePizza.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
-		<div class="col-sm-6">
-			@Html.DropDownListFor(model => model.ingredientePizza.IdIngrediente, lstIngredientes)
-		</div>*@
-			@Html.LabelFor(model => model, new { @class = "control-label col-sm-2" })
-			<div class="col-sm-6">
-				@Html.DropDownList("Ingredientes")
-			</div>
+			@foreach (Ingrediente ingrediente in Ingredientes)
+			{
+				<input type="checkbox" value="@ingrediente.IdIngrediente" name="IdCheckBox" id="@ingrediente.IdIngrediente">
+				@Html.Label(ingrediente.NomeIngrediente);
+				<br />
+			}
 			<br />
 			<div class="col-md-offset-2 col-md-10">
-				@*@Html.ActionLink("Cadastrar", "AddIngredientesNaPizza" , "Pizza" , new { IdIngrediente = @Model.IdIngrediente_Pizza}, null )*@
 				<input type="submit" value="Create" class="btn btn-default" />
 			</div>
 		</div>
@@ -39,7 +31,3 @@
 <div>
 	@Html.ActionLink("Voltar", "Home", "Pizza")
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
