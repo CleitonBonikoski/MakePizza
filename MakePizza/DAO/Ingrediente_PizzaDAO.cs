@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MakePizza.Models;
+using MakePizza.Utils;
 
 namespace MakePizza.DAO
 {
@@ -11,7 +12,7 @@ namespace MakePizza.DAO
 		#region Contexto
 		private static Contexto contexto = SingletonContexto.GetInstance();
 		#endregion
-
+		
 		public static bool CadastrarIngredientePizza(Ingrediente_Pizza ingrediente_Pizza)
 		{
 			try
@@ -24,6 +25,16 @@ namespace MakePizza.DAO
 			{
 				return false;
 			}
+		}
+
+		public static List<Ingrediente_Pizza> RetornarTodos()
+		{
+			return contexto.Ingredientes_Pizza.ToList();
+		}
+
+		public static List<Ingrediente_Pizza> RetornarTodosNaSessao(string sessaoPizza)
+		{
+			return contexto.Ingredientes_Pizza.Where(_ => _.GuidPizza.Equals(sessaoPizza)).ToList();
 		}
 	}
 }

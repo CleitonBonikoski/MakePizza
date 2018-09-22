@@ -15,6 +15,7 @@ namespace MakePizza.Models
 		[Key]
 		public int IdPizza { get; set; }
 
+		[Display(Name = " Ingredientes ")]
 		public List<Ingrediente_Pizza> lstIngredientes { get; set; }
 
 		[Display(Name = "Tamanho Pizza")]

@@ -13,7 +13,7 @@ namespace MakePizza.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809220118267_MakeDB"; }
+            get { return "201809220239443_MakeDB"; }
         }
         
         string IMigrationMetadata.Source

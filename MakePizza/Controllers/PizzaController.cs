@@ -15,6 +15,8 @@ namespace MakePizza.Controllers
 		#region Home()
 		public ActionResult Home()
 		{
+			string sessaoPizza = Sessao.CriarSessaoPizza();
+			ViewBag.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
 		#endregion
@@ -30,6 +32,10 @@ namespace MakePizza.Controllers
 		[HttpPost]
 		public ActionResult CadastrarPizza(Pizza pizza)
 		{
+			string sessaoPizza = Sessao.CriarSessaoPizza();
+			pizza.GuidPizza = sessaoPizza;
+			pizza.GuidPedido = Sessao.CriarSessaoPedido();
+			pizza.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			if (PizzaDAO.CadastrarPizza(pizza))
 				return RedirectToAction("Home", "Pedido");
 
