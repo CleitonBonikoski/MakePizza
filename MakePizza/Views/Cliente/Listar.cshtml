@@ -1,0 +1,43 @@
+﻿@using MakePizza.Models
+@model List<Cliente>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<div>
+    @Html.ActionLink("Cadastrar Cliente", "CadastrarCliente", "Cliente")
+
+    <table class="table table-hover table-striped"
+           style="margin-top:30px">
+        <tr>
+            <th>Nome</th>
+            <th>CEP</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Senha</th>
+            <th>Admin</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Cliente cliente in Model)
+        {
+        <tr>
+            <td>@cliente.NomeCliente</td>
+            <td>@cliente.CepCliente</td>
+            <td>@cliente.CpfCliente</td>
+            <td>@cliente.EmailCliente</td>
+            <td>@cliente.SenhaCliente</td>
+            <td>@cliente.AdminCliente</td>
+            <td>
+                @Html.ActionLink("Alterar", "AlterarCliente", "Cliente",
+                         new { id = cliente.IdCliente }, null)
+            </td>
+        </tr>
+        }
+    </table>
+
+    <p>Dados atualizados às: <b> @DateTime.Now </b></p>
+
+</div>
+

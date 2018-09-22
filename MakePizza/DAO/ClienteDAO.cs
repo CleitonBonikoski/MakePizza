@@ -6,40 +6,47 @@ using MakePizza.Models;
 
 namespace MakePizza.DAO
 {
-	public class ClienteDAO
-	{
-		#region Contexto
-		private static Contexto contexto = SingletonContexto.GetInstance();
-		#endregion
+    public class ClienteDAO
+    {
+        #region Contexto
+        private static Contexto contexto = SingletonContexto.GetInstance();
+        #endregion
 
-		#region CadastrarCliente(Cliente)
-		public static bool CadastrarCliente(Cliente cliente)
-		{
-			if(BuscarClientePorNome(cliente) == null)
-			{
-				cliente.AdminCliente = false;
-				contexto.Clientes.Add(cliente);
-				contexto.SaveChanges();
-				return true;
-			}
-			return false;
-		}
-		#endregion
+        #region CadastrarCliente(Cliente)
+        public static bool CadastrarCliente(Cliente cliente)
+        {
+            if (BuscarClientePorNome(cliente) == null)
+            {
+                cliente.AdminCliente = false;
+                contexto.Clientes.Add(cliente);
+                contexto.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        #endregion
 
-		#region BuscarClientePorEmail(Cliente)
-		public static Cliente BuscarClientePorEmail(Cliente cliente)
-		{
-			return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(cliente.EmailCliente) &&
-													_.SenhaCliente.Equals(cliente.SenhaCliente));
-		}
-		#endregion
+        #region Retornar Clientes()
+        public static List<Cliente> RetornarClientes()
+        {
+            return contexto.Clientes.ToList();
+        }
+        #endregion
 
-		#region BuscarClientePorNome(Cliente)
-		public static Cliente BuscarClientePorNome(Cliente cliente)
-		{
-			return contexto.Clientes.FirstOrDefault(_ => _.NomeCliente.Equals(cliente.NomeCliente) &&
-													_.SenhaCliente.Equals(cliente.SenhaCliente));
-		}
-		#endregion
-	}
+        #region BuscarClientePorEmailSenha(Cliente)
+        public static Cliente BuscarClientePorEmailSenha(Cliente cliente)
+        {
+            return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(cliente.EmailCliente) &&
+                                                    _.SenhaCliente.Equals(cliente.SenhaCliente));
+        }
+        #endregion
+
+        #region BuscarClientePorNome(Cliente)
+        public static Cliente BuscarClientePorNome(Cliente cliente)
+        {
+            return contexto.Clientes.FirstOrDefault(_ => _.NomeCliente.Equals(cliente.NomeCliente) &&
+                                                    _.SenhaCliente.Equals(cliente.SenhaCliente));
+        }
+        #endregion
+    }
 }

@@ -1,67 +1,80 @@
 ﻿@model MakePizza.Models.Cliente
 @{
-	ViewBag.Title = "CadastrarCliente";
+    ViewBag.Title = "CadastrarCliente";
 }
 <h2>CadastrarCliente</h2>
-@using (Html.BeginForm("CadastrarCliente","Cliente",FormMethod.Post))
+@using (Html.BeginForm("CadastrarCliente", "Cliente", FormMethod.Post))
 {
-	@Html.AntiForgeryToken()
 
-	<div class="form-horizontal">
-		<h4>Cliente</h4>
-		<hr />
-		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		<div class="form-group">
-			@Html.LabelFor(model => model.NomeCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.NomeCliente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.NomeCliente, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.CepCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.CepCliente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.CepCliente, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.CpfCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.CpfCliente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.CpfCliente, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.EmailCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.EmailCliente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.EmailCliente, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.SenhaCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.SenhaCliente, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.SenhaCliente, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		@*<div class="form-group">
-			@Html.LabelFor(model => model.AdminCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				<div class="checkbox">
-					@Html.EditorFor(model => model.AdminCliente)
-					@Html.ValidationMessageFor(model => model.AdminCliente, "", new { @class = "text-danger" })
-				</div>
-			</div>
-		</div>*@
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Cadastrar" class="btn btn-default" />
-			</div>
-		</div>
-	</div>
-}
-<div>
-	@Html.ActionLink("Voltar para Login", "Home", "Cliente")
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Cliente</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomeCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NomeCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NomeCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CepCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CepCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CepCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CpfCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CpfCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CpfCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmailCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmailCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SenhaCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SenhaCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SenhaCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.AdminCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.AdminCliente)
+                    @Html.ValidationMessageFor(model => model.AdminCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+    <div class="g-recaptcha" data-sitekey="6Lc2fHEUAAAAADKWJwFbPAnbf7YurVaSxfIA9eOC"></div>
+
+    <div class="form-group" style="margin-top:30px">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cadastrar" class="btn btn-default" />
+        </div>
+    </div>
 </div>
+}
+    
+<span sytle="display:inline-block; font-size:20px; margin:20px 0; padding:20px; border:1px solid #D3D3D3">
+    @ViewBag.Message
+</span>
+
+<script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+
+<div>
+    @Html.ActionLink("Voltar para Login", "Home", "Cliente")
+</div>
+
+

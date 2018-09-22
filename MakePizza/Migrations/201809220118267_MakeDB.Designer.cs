@@ -7,13 +7,13 @@ namespace MakePizza.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CriateDB : IMigrationMetadata
+    public sealed partial class MakeDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriateDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MakeDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809211425289_CriateDB"; }
+            get { return "201809220118267_MakeDB"; }
         }
         
         string IMigrationMetadata.Source
