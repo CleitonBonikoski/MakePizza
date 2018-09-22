@@ -1,5 +1,6 @@
 ﻿using MakePizza.DAO;
 using MakePizza.Models;
+using MakePizza.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace MakePizza.Controllers
 {
 	public class PizzaController : Controller
 	{
+		private string Ingrediente_Pizza_Sessao ; 
 		#region Home()
 		public ActionResult Home()
 		{
@@ -50,26 +52,31 @@ namespace MakePizza.Controllers
 		}
 		#endregion
 
-		#region AddIngredientesNaPizza(Pizza)
+		#region AddIngredientesNaPizza(int[])
 		[HttpPost]
 		public ActionResult AddIngredientesNaPizza(int[] IdCheckBox)
 		{
-			ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
-
 			if (IdCheckBox != null)
 			{
+				Ingrediente_Pizza_Sessao = Sessao.CriarSessaoPizza();
+
 				foreach (int idIngrediente in IdCheckBox)
 				{
 					Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(idIngrediente);
 					Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
 					{
-						ingredientePizza = ingrediente
+						ingredientePizza = ingrediente ,
+						GuidPizza = Ingrediente_Pizza_Sessao
 					};
 					Ingrediente_PizzaDAO.CadastrarIngredientePizza(ingrediente_Pizza);
 				}
-				return View();
+				return RedirectToAction("Home", "Pizza");
 			}
-			return RedirectToAction("Home", "Pizza");
+
+			ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
+
+			return View();
+
 		}
 		#endregion
 
