@@ -30,16 +30,24 @@ namespace MakePizza.Controllers
 
 		#region CadastrarPizza(Pizza)
 		[HttpPost]
-		public ActionResult CadastrarPizza(Pizza pizza)
+		public ActionResult CadastrarPizza(Pizza novaPizza)
 		{
 			string sessaoPizza = Sessao.CriarSessaoPizza();
-			pizza.GuidPizza = sessaoPizza;
-			pizza.GuidPedido = Sessao.CriarSessaoPedido();
-			pizza.DataPizza = DateTime.Now;
-			pizza.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
-			if (PizzaDAO.CadastrarPizza(pizza))
-				if(Pizza_PedidoDAO)
-				return RedirectToAction("Home", "Pedido");
+			novaPizza.GuidPizza = sessaoPizza;
+			novaPizza.GuidPedido = Sessao.CriarSessaoPedido();
+			novaPizza.DataPizza = DateTime.Now;
+			novaPizza.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
+			if (PizzaDAO.CadastrarPizza(novaPizza))
+			{
+				Pizza_Pedido pizza_Pedido = new Pizza_Pedido
+				{
+					pizza = novaPizza,
+					DataPizza_Pedido = DateTime.Now,
+					GuidPedido = Sessao.CriarSessaoPedido()			
+				};
+				if (Pizza_PedidoDAO.CadastrarPizza_Pedido(pizza_Pedido))
+					return RedirectToAction("Home", "Pedido");
+			}
 
 			return View();
 		}
