@@ -30,6 +30,8 @@ namespace MakePizza.Models
 		[Required(ErrorMessage = "Status Obrigatório ")]
 		public string StatusPizza { get; set; }
 
+		public DateTime DataPizza { get; set; } 
+
 		public string GuidPizza { get; set; }
 
 		public string GuidPedido { get; set; }

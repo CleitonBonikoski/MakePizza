@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MakePizza.Models;
+using MakePizza.Utils;
 
 namespace MakePizza.DAO
 {
@@ -17,6 +18,7 @@ namespace MakePizza.DAO
 		{
 			try
 			{
+				pizza.DataPizza = DateTime.Now;
 				contexto.Pizzas.Add(pizza);
 				contexto.SaveChanges();
 				return true;
@@ -27,5 +29,11 @@ namespace MakePizza.DAO
 			}
 		}
 		#endregion
+		
+		public static List<Pizza> RetornarPizzaPedido()
+		{
+			string GuidPedidoAtual = Sessao.CriarSessaoPedido();
+			return contexto.Pizzas.Where(_ => _.GuidPedido.Equals(GuidPedidoAtual)).ToList();
+		}
 	}
 }

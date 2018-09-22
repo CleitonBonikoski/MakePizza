@@ -139,9 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809220239443_MakeDB.cs" />
-    <Compile Include="Migrations\201809220239443_MakeDB.Designer.cs">
-      <DependentUpon>201809220239443_MakeDB.cs</DependentUpon>
+    <Compile Include="Migrations\201809222225525_MakeDB.cs" />
+    <Compile Include="Migrations\201809222225525_MakeDB.Designer.cs">
+      <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -186,10 +186,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\OrientacaoAPI\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809220239443_MakeDB.resx">
-      <DependentUpon>201809220239443_MakeDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809222225525_MakeDB.resx">
+      <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

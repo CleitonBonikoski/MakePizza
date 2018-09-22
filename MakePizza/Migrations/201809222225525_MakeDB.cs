@@ -52,6 +52,7 @@ namespace MakePizza.Migrations
                 c => new
                     {
                         IdPizza_Pedido = c.Int(nullable: false, identity: true),
+                        DataPizza_Pedido = c.DateTime(nullable: false),
                         GuidPedido = c.String(),
                         pizza_IdPizza = c.Int(),
                         Pedido_IdPedido = c.Int(),
@@ -70,6 +71,7 @@ namespace MakePizza.Migrations
                         TamanhoPizza = c.Int(nullable: false),
                         PrecoPizza = c.Double(nullable: false),
                         StatusPizza = c.String(nullable: false),
+                        DataPizza = c.DateTime(nullable: false),
                         GuidPizza = c.String(),
                         GuidPedido = c.String(),
                     })
@@ -80,6 +82,7 @@ namespace MakePizza.Migrations
                 c => new
                     {
                         IdIngrediente_Pizza = c.Int(nullable: false, identity: true),
+                        DataIngrediente_Pizza = c.DateTime(nullable: false),
                         GuidPizza = c.String(),
                         ingredientePizza_IdIngrediente = c.Int(),
                         Pizza_IdPizza = c.Int(),

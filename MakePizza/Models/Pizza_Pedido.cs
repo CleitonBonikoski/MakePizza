@@ -17,6 +17,8 @@ namespace MakePizza.Models
 
 		public Pizza pizza { get; set; }
 
+		public DateTime DataPizza_Pedido { get; set; }
+		
 		public string GuidPedido { get; set; }
 		
 		#endregion

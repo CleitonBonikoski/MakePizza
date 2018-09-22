@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakePizza.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace MakePizza.Controllers
 		// GET: Pedido
 		public ActionResult Home()
 		{
+			ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
 			return View();
 		}
 	}
