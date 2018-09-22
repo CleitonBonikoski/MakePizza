@@ -17,7 +17,6 @@ namespace MakePizza.DAO
 		{
 			try
 			{
-				ingrediente_Pizza.DataIngrediente_Pizza = DateTime.Now;
 				contexto.Ingredientes_Pizza.Add(ingrediente_Pizza);
 				contexto.SaveChanges();
 				return true;

@@ -18,7 +18,6 @@ namespace MakePizza.DAO
 		{
 			try
 			{
-				pizza.DataPizza = DateTime.Now;
 				contexto.Pizzas.Add(pizza);
 				contexto.SaveChanges();
 				return true;

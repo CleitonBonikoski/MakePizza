@@ -135,6 +135,7 @@
     <Compile Include="DAO\Ingrediente_PizzaDAO.cs" />
     <Compile Include="DAO\PedidoDAO.cs" />
     <Compile Include="DAO\PizzaDAO.cs" />
+    <Compile Include="DAO\Pizza_PedidoDAO.cs" />
     <Compile Include="DAO\SingletonContexto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

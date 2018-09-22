@@ -35,8 +35,10 @@ namespace MakePizza.Controllers
 			string sessaoPizza = Sessao.CriarSessaoPizza();
 			pizza.GuidPizza = sessaoPizza;
 			pizza.GuidPedido = Sessao.CriarSessaoPedido();
+			pizza.DataPizza = DateTime.Now;
 			pizza.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			if (PizzaDAO.CadastrarPizza(pizza))
+				if(Pizza_PedidoDAO)
 				return RedirectToAction("Home", "Pedido");
 
 			return View();
@@ -72,6 +74,7 @@ namespace MakePizza.Controllers
 					Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
 					{
 						ingredientePizza = ingrediente ,
+						DataIngrediente_Pizza = DateTime.Now,
 						GuidPizza = Ingrediente_Pizza_Sessao
 					};
 					Ingrediente_PizzaDAO.CadastrarIngredientePizza(ingrediente_Pizza);
