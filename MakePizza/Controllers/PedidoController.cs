@@ -19,34 +19,47 @@ namespace MakePizza.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Home(int[] lstIdPizzaConfirmado, string emailCliente, double precoPedido)
+		public ActionResult Home(int[] lstIdPizzaConfirmado, Pedido pedido)
 		{
+			List<Pizza> retornoPizzaPedido = PizzaDAO.RetornarPizzaPedido();
+
 			if (lstIdPizzaConfirmado != null)
 			{
 				List<Pizza> lstPizzasConfirmadas = new List<Pizza>();
 
-				List<Pizza_Pedido> lstPizzas_PedidoConfirmadas = new List<Pizza_Pedido>();
-
 				foreach (int IdPizzaConfirmada in lstIdPizzaConfirmado)
 					lstPizzasConfirmadas.Add(PizzaDAO.RetornarPizzaPedidoPorId(IdPizzaConfirmada));
 
-				Cliente cliente = ClienteDAO.BuscarClientePorEmail(emailCliente);
-
-				Pedido pedido = new Pedido
+				if (retornoPizzaPedido.Count == lstPizzasConfirmadas.Count)
 				{
-					ClientePedido = cliente,
-					DataPedido = DateTime.Now,
-					GuidPedido = Sessao.ValidarSessaoPedido(),
-					PizzasPedido = lstPizzas_PedidoConfirmadas,
-					PrecoTotalPedido = precoPedido,
-					StatusPedido = "Finalizado"
-				};
-				if (PedidoDAO.CadastrarPedido(pedido))
-					return RedirectToAction("Home", "Pizza");
+					Cliente cliente = ClienteDAO.BuscarClientePorEmail(pedido.ClientePedido.EmailCliente);
+
+					string sessaoPedidoAtual = Sessao.ValidarSessaoPedido();
+
+					pedido.PizzasPedido = Pizza_PedidoDAO.RetornarPizza_PedidoPorGuid(sessaoPedidoAtual);
+					pedido.ClientePedido = cliente;
+					pedido.DataPedido = DateTime.Now;
+					pedido.GuidPedido = sessaoPedidoAtual;
+
+					if (PedidoDAO.CadastrarPedido(pedido))
+						if (Sessao.KillTodasAsSessoes())
+							return RedirectToAction("Home", "Cliente");
+
+					return RedirectToAction("AddIngredientesNaPizza", "Pizza");
+
+				}
+
 			}
 
+			ViewBag.Pizzas = retornoPizzaPedido;
+			return View();
+		}
+
+		public ActionResult RemoverPizzaDoPedido()
+		{
 			ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
 			return View();
 		}
+
 	}
 }

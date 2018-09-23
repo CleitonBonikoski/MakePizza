@@ -182,6 +182,7 @@
     <Content Include="Views\Ingrediente\AlterarIngrediente.cshtml" />
     <Content Include="Views\Cliente\Listar.cshtml" />
     <Content Include="Views\Cliente\AlterarCliente.cshtml" />
+    <Content Include="Views\Pedido\RemoverPizzaDoPedido.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,6 +24,8 @@ namespace MakePizza.Controllers
 		#region CadastrarPizza()
 		public ActionResult CadastrarPizza()
 		{
+			string sessaoPizza = Sessao.CriarSessaoPizza();
+			ViewBag.Ingredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
 		#endregion
@@ -49,6 +51,7 @@ namespace MakePizza.Controllers
 					return RedirectToAction("Home", "Pedido");
 			}
 
+			ViewBag.Ingredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
 		#endregion

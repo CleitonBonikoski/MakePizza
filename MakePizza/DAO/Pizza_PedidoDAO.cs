@@ -27,6 +27,11 @@ namespace MakePizza.DAO
 				return false;
 			}
 		}
+
+		public static List<Pizza_Pedido> RetornarPizza_PedidoPorGuid(string sessaoPedidoAtual)
+		{
+			return contexto.Pizza_Pedidos.Where(_ => _.GuidPedido.Equals(sessaoPedidoAtual)).ToList();
+		}
 		#endregion
 
 	}
