@@ -1,13 +1,34 @@
 ﻿@using MakePizza.Models
 
+@model Pizza
+
 @{
-	ViewBag.Title = "Home";
 	List<Pizza> lstPizzas = ViewBag.Pizzas;
 }
 
-<h2>Home</h2>
+@using (Html.BeginForm("Home", "Pedido", FormMethod.Post))
+{
+	<div class="form-horizontal">
+		<h>Confirmar Pizza</h>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+		<div class="form-group">
+			@foreach (Pizza pizza in lstPizzas)
+			{
+				<input type="checkbox" value="@pizza.IdPizza" name="IdCheckBox" checked="checked" id="@pizza.IdPizza">
+				@Html.Label(pizza.GuidPizza); 
+				@Html.Label(Convert.ToString(pizza.PrecoPizza));
+				<br />
+			}
+			<br />
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Confirmar Pedido" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
 
-<table class="table">
-</table>
-
+<div>
+	@Html.ActionLink("AddIngredientesNaPizza", "AddIngredientesNaPizza", "Pizza")
+</div>

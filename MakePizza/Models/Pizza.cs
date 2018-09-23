@@ -18,9 +18,12 @@ namespace MakePizza.Models
 		[Display(Name = " Ingredientes ")]
 		public List<Ingrediente_Pizza> lstIngredientes { get; set; }
 
-		[Display(Name = "Tamanho Pizza")]
+		[Display(Name ="Nome da Sua Pizza")]
+		public string NomePizza { get; set; }
+
+		[Display(Name = "P - M - G - GG ")]
 		[Required(ErrorMessage = "Tamanho Obrigatório ")]
-		public int TamanhoPizza { get; set; }
+		public string TamanhoPizza { get; set; }
 
 		[Display(Name = "Preço Pizza")]
 		[Required(ErrorMessage = "Preço Obrigatório ")]

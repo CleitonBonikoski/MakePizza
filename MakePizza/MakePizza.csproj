@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201809222225525_MakeDB.Designer.cs">
       <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809230026215_MakeNamePizza.cs" />
+    <Compile Include="Migrations\201809230026215_MakeNamePizza.Designer.cs">
+      <DependentUpon>201809230026215_MakeNamePizza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -192,6 +196,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809222225525_MakeDB.resx">
       <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809230026215_MakeNamePizza.resx">
+      <DependentUpon>201809230026215_MakeNamePizza.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

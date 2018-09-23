@@ -39,10 +39,17 @@ namespace MakePizza.DAO
             return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(cliente.EmailCliente) &&
                                                     _.SenhaCliente.Equals(cliente.SenhaCliente));
         }
-        #endregion
+		#endregion
 
-        #region BuscarClientePorNome(Cliente)
-        public static Cliente BuscarClientePorNome(Cliente cliente)
+		#region BuscarClientePorEmail(string)
+		public static Cliente BuscarClientePorEmail(string email)
+		{
+			return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(email));
+		}
+		#endregion
+
+		#region BuscarClientePorNome(Cliente)
+		public static Cliente BuscarClientePorNome(Cliente cliente)
         {
             return contexto.Clientes.FirstOrDefault(_ => _.NomeCliente.Equals(cliente.NomeCliente) &&
                                                     _.SenhaCliente.Equals(cliente.SenhaCliente));

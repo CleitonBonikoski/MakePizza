@@ -34,5 +34,10 @@ namespace MakePizza.DAO
 			string GuidPedidoAtual = Sessao.CriarSessaoPedido();
 			return contexto.Pizzas.Where(_ => _.GuidPedido.Equals(GuidPedidoAtual)).ToList();
 		}
+
+		public static Pizza RetornarPizzaPedidoPorId(int idPizza)
+		{
+			return contexto.Pizzas.Find(idPizza);
+		}
 	}
 }
