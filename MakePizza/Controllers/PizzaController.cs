@@ -110,16 +110,18 @@ namespace MakePizza.Controllers
 		{
 			if (IdCheckBox != null)
 			{
-				Ingrediente_Pizza_Sessao = Sessao.CriarSessaoPizza();
+				Ingrediente_Pizza_Sessao = Sessao.CriarNovaGuidSessaoPizza();
 
 				foreach (int idIngrediente in IdCheckBox)
 				{
 					Ingrediente ingrediente = IngredienteDAO.BuscarIngredientePorId(idIngrediente);
 					Ingrediente_Pizza ingrediente_Pizza = new Ingrediente_Pizza
 					{
-						ingredientePizza = ingrediente ,
+						ingredientePizza = ingrediente,
 						DataIngrediente_Pizza = DateTime.Now,
-						GuidPizza = Ingrediente_Pizza_Sessao
+						GuidPizza = Ingrediente_Pizza_Sessao,
+						GuidPedido = Sessao.CriarSessaoPedido()
+						
 					};
 					Ingrediente_PizzaDAO.CadastrarIngredientePizza(ingrediente_Pizza);
 				}

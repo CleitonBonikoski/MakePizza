@@ -43,6 +43,15 @@ namespace MakePizza.Utils
 		}
 		#endregion
 
+		#region  CriarNovaGuidSessaoPizza()
+		public static string CriarNovaGuidSessaoPizza()
+		{
+			Guid guid = Guid.NewGuid();
+			HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] = guid;
+			return HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION].ToString();
+		}
+		#endregion
+
 		#region  CriarSessaoPedido()
 		public static string CriarSessaoPedido()
 		{
@@ -59,12 +68,12 @@ namespace MakePizza.Utils
 		public static bool KillTodasAsSessoes()
 		{
 			try
-			{				
+			{
 				HttpContext.Current.Session[CLIENTE_SESSION] = null;
 				HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] = null;
 				HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] = null;
 
-                return true;
+				return true;
 			}
 			catch (Exception)
 			{

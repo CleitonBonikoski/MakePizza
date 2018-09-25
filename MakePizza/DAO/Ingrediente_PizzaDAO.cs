@@ -36,5 +36,19 @@ namespace MakePizza.DAO
 		{
 			return contexto.Ingredientes_Pizza.Where(_ => _.GuidPizza.Equals(sessaoPizza)).ToList();
 		}
+
+		public static bool AtualizarIngrediente_Pizza(Ingrediente_Pizza ingrediente_Pizza)
+		{
+			try
+			{
+				CadastrarIngredientePizza(ingrediente_Pizza);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+			
+		}
 	}
 }

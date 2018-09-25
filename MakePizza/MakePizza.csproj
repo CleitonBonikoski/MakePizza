@@ -141,9 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809241842508_MakePizzaDB.cs" />
-    <Compile Include="Migrations\201809241842508_MakePizzaDB.Designer.cs">
-      <DependentUpon>201809241842508_MakePizzaDB.cs</DependentUpon>
+    <Compile Include="Migrations\201809251139005_MakeDB.cs" />
+    <Compile Include="Migrations\201809251139005_MakeDB.Designer.cs">
+      <DependentUpon>201809251139005_MakeDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -193,8 +193,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809241842508_MakePizzaDB.resx">
-      <DependentUpon>201809241842508_MakePizzaDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809251139005_MakeDB.resx">
+      <DependentUpon>201809251139005_MakeDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
