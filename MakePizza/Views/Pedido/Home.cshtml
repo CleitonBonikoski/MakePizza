@@ -6,6 +6,8 @@
 
 	ViewBag.Title = "Confirmar";
 	List<Pizza> lstPizzas = ViewBag.Pizzas;
+
+	double ValorTotalPedido = 0;
 }
 
 @using (Html.BeginForm("Home", "Pedido", FormMethod.Post))
@@ -20,8 +22,9 @@
 			{
 				<input type="checkbox" value="@pizza.IdPizza" name="lstIdPizzaConfirmado" checked="checked" id="@pizza.IdPizza" hidden="hidden">
 				@Html.Label(pizza.NomePizza);
+				ValorTotalPedido += pizza.PrecoPizza;
 				<br />
-			}
+}
 			<br />
 
 			<div class="form-group">
@@ -43,6 +46,7 @@
 			<div class="form-group">
 				@Html.LabelFor(model => model.PrecoTotalPedido, htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
+					@Html.Label(Convert.ToDouble(ValorTotalPedido).ToString("C2"));
 					@Html.EditorFor(model => model.PrecoTotalPedido, new { htmlAttributes = new { @class = "form-control" } })
 					@Html.ValidationMessageFor(model => model.PrecoTotalPedido, "", new { @class = "text-danger" })
 				</div>
