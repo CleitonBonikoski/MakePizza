@@ -26,7 +26,7 @@
                 <td>@ingrediente.IdIngrediente</td>
                 <td>@ingrediente.NomeIngrediente</td>
                 <td>@ingrediente.CategoriaIngrediente.NomeCategoria</td>
-                <td>@ingrediente.PrecoIngrediente</td>
+                <td>@ingrediente.PrecoIngrediente.ToString("C2")</td>
                 <td>@ingrediente.StatusIngrediente</td>
                 <td>
                     @Html.ActionLink("Alterar", "AlterarIngrediente", "Ingrediente",
