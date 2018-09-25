@@ -25,5 +25,10 @@ namespace MakePizza.DAO
 				return false;
 			}
 		}
-	}
+
+        public static List<Pedido> RetornarPedidos()
+        {
+            return contexto.Pedidos.Include("NomeCliente").ToList();
+        }
+    }
 }

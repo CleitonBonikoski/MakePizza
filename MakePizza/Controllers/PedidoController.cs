@@ -11,10 +11,15 @@ namespace MakePizza.Controllers
 {
 	public class PedidoController : Controller
 	{
-		// GET: Pedido
-		public ActionResult Home()
+        private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+
+        // GET: Pedido
+        public ActionResult Home()
 		{
-			ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
 			return View();
 		}
 
@@ -32,7 +37,7 @@ namespace MakePizza.Controllers
 
 				if (retornoPizzaPedido.Count == lstPizzasConfirmadas.Count)
 				{
-					Cliente cliente = ClienteDAO.BuscarClientePorEmail(pedido.ClientePedido.EmailCliente);
+					Cliente cliente = ClienteDAO.BuscarClientePorEmail(pedido.ClientePedido);
 
 					string sessaoPedidoAtual = Sessao.ValidarSessaoPedido();
 
@@ -57,9 +62,17 @@ namespace MakePizza.Controllers
 
 		public ActionResult RemoverPizzaDoPedido()
 		{
-			ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            ViewBag.Pizzas = PizzaDAO.RetornarPizzaPedido();
 			return View();
 		}
+
+        public ActionResult ListaPedidos()
+        {
+            return View(PedidoDAO.RetornarPedidos());
+        }
 
 	}
 }

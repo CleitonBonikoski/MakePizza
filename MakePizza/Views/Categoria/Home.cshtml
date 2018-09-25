@@ -6,8 +6,11 @@
 }
 
 <div>
-    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria")
 
+    <h1>Categorias Cadastradas: </h1>
+    <div style="margin-top:5px">
+        @Html.ActionLink("Cadastrar Nova Categoria", "CadastrarCategoria", "Categoria")
+    </div>
     <table class="table table-hover table-striped"
            style="margin-top:30px">
         <tr>
@@ -25,7 +28,7 @@
                 <td>@categoria.StatusCategoria</td>
                 <td>
                     @Html.ActionLink("Alterar", "AlterarCategoria", "Categoria",
-                                 new { id = categoria.IdCategoria }, null)
+                                      new { id = categoria.IdCategoria }, null)
                 </td>
             </tr>
         }

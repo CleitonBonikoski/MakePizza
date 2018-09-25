@@ -6,10 +6,10 @@
 }
 
 <div>
-    <h2>Gerenciamento de Ingredientes</h2>
-
-    @Html.ActionLink("Cadastrar Ingrediente", "CadastrarIngrediente", "Ingrediente")
-
+    <h1>Ingredientes Cadastrados</h1>
+    <div style="margin-top:5px">
+        @Html.ActionLink("Cadastrar Novo Ingrediente", "CadastrarIngrediente", "Ingrediente")
+    </div>
     <table class="table table-hover table-striped"
            style="margin-top:30px">
         <tr>
@@ -30,7 +30,7 @@
                 <td>@ingrediente.StatusIngrediente</td>
                 <td>
                     @Html.ActionLink("Alterar", "AlterarIngrediente", "Ingrediente",
-                            new { id = ingrediente.IdIngrediente }, null)
+                                 new { id = ingrediente.IdIngrediente }, null)
                 </td>
             </tr>
         }

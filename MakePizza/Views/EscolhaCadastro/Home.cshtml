@@ -1,13 +1,20 @@
 ﻿
 @{
-	ViewBag.Title = "Gerenciar";
+    ViewBag.Title = "Gerenciar";
 }
 
 <h2>@ViewBag.Title</h2>
 <div>
-	@Html.ActionLink("Mostrar Clientes", "Listar", "Cliente") <br />
-	@Html.ActionLink("Mostrar Categorias", "Home", "Categoria") <br />
-	@Html.ActionLink("Mostrar Ingrediente", "Home", "Ingrediente") <br />
-	@Html.ActionLink("Add Ingrediente na Pizza", "AddIngredientesNaPizza", "Pizza") <br />
-
+    <div style="margin-top:5px">
+        @Html.ActionLink("Mostrar Clientes", "Listar", "Cliente") <br />
+    </div>
+    <div style="margin-top:5px">
+        @Html.ActionLink("Mostrar Categorias", "Home", "Categoria") <br />
+    </div>
+    <div style="margin-top:5px">
+        @Html.ActionLink("Mostrar Ingrediente", "Home", "Ingrediente") <br />
+    </div>
+    <div style="margin-top:5px">
+        @Html.ActionLink("Criar Nova Pizza", "AddIngredientesNaPizza", "Pizza") <br />
+    </div>
 </div>

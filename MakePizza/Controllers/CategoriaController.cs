@@ -16,7 +16,10 @@ namespace MakePizza.Controllers
 		#region Home()
 		public ActionResult Home()
 		{
-			return View(CategoriaDAO.RetornarCategorias());
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            return View(CategoriaDAO.RetornarCategorias());
 		}
 		#endregion
 
@@ -44,7 +47,10 @@ namespace MakePizza.Controllers
 		#region RemoverCategoria(id)
 		public ActionResult RemoverCategoria(int id)
 		{
-			CategoriaDAO.RemoverCategoria(id);
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            CategoriaDAO.RemoverCategoria(id);
 			return RedirectToAction("Home", "Categoria");
 		}
 		#endregion
@@ -52,7 +58,10 @@ namespace MakePizza.Controllers
 		#region AlterarCategoria(id)
 		public ActionResult AlterarCategoria(int id)
 		{
-			return View(CategoriaDAO.BuscarCategoriaPorId(id));
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            return View(CategoriaDAO.BuscarCategoriaPorId(id));
 		}
 		#endregion
 

@@ -11,18 +11,34 @@ namespace MakePizza.Controllers
 {
 	public class PizzaController : Controller
 	{
-		private string Ingrediente_Pizza_Sessao ; 
+        private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+
+        private string Ingrediente_Pizza_Sessao ; 
+
 		#region Home()
 		public ActionResult Home()
 		{
-			string sessaoPizza = Sessao.CriarSessaoPizza();
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            string sessaoPizza = Sessao.CriarSessaoPizza();
 			ViewBag.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
-		#endregion
+        #endregion
 
-		#region CadastrarPizza()
-		public ActionResult CadastrarPizza()
+        #region Listar Pizzas
+        public ActionResult Listar()
+        {
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            return View();
+        }
+        #endregion
+
+        #region CadastrarPizza()
+        public ActionResult CadastrarPizza()
 		{
 			string sessaoPizza = Sessao.CriarSessaoPizza();
 			ViewBag.Ingredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
@@ -59,14 +75,20 @@ namespace MakePizza.Controllers
 		#region MostrarPizza()
 		public ActionResult MostrarPizza()
 		{
-			return View();
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            return View();
 		}
 		#endregion
 
 		#region AddIngredientesNaPizza()
 		public ActionResult AddIngredientesNaPizza()
 		{
-			ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
+
+            ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
 			return View();
 		}
 		#endregion

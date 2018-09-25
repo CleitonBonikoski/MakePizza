@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using MakePizza.Utils
+@{ 
+    ViewBag.SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,21 +15,21 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        @Html.ActionLink("MakePizza", "Home", "Cliente", null, new { @class = "navbar-brand" }) <br>
+        @Html.ActionLink("MakePizza", "Home", "OrientacaoAPI", null, new { @class = "navbar-brand" }) <br>
 
         <ul class="navbar-nav ml-auto">
-            @if (!Request.IsAuthenticated)
+            @if (ViewBag.SessaoClienteAtual == null)
             {
                 <li class="nav-item active" style="margin-left:10px">
                     @Html.ActionLink("Login", "Home", "Cliente", null,
-new { @class = "nav-link" })
+                    new { @class = "nav-link" })
                 </li>
             }
             else
             {
                 <li class="nav-item active" style="margin-left:10px">
                     @Html.ActionLink("Logout", "Logout", "Cliente", null,
-new { @class = "nav-link" })
+                    new { @class = "nav-link" })
                 </li>
             }
         </ul>

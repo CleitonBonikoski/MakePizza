@@ -126,7 +126,8 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EscolhaCadastroController.cs" />
     <Compile Include="Controllers\IngredienteController.cs" />
-    <Compile Include="Controllers\IngredientesAPIController.cs" />
+    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\OrientacaoAPIController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
@@ -140,13 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809222225525_MakeDB.cs" />
-    <Compile Include="Migrations\201809222225525_MakeDB.Designer.cs">
-      <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809230026215_MakeNamePizza.cs" />
-    <Compile Include="Migrations\201809230026215_MakeNamePizza.Designer.cs">
-      <DependentUpon>201809230026215_MakeNamePizza.cs</DependentUpon>
+    <Compile Include="Migrations\201809241842508_MakePizzaDB.cs" />
+    <Compile Include="Migrations\201809241842508_MakePizzaDB.Designer.cs">
+      <DependentUpon>201809241842508_MakePizzaDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -183,6 +180,8 @@
     <Content Include="Views\Cliente\Listar.cshtml" />
     <Content Include="Views\Cliente\AlterarCliente.cshtml" />
     <Content Include="Views\Pedido\RemoverPizzaDoPedido.cshtml" />
+    <Content Include="Views\OrientacaoAPI\Home.cshtml" />
+    <Content Include="Views\Pedido\ListaPedidos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,14 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\OrientacaoAPI\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809222225525_MakeDB.resx">
-      <DependentUpon>201809222225525_MakeDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809230026215_MakeNamePizza.resx">
-      <DependentUpon>201809230026215_MakeNamePizza.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809241842508_MakePizzaDB.resx">
+      <DependentUpon>201809241842508_MakePizzaDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

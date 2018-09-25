@@ -2,11 +2,11 @@
 @model List<Cliente>
 
 @{
-    ViewBag.Title = "Listar";
+    ViewBag.Title = "Clientes Cadastrados";
 }
-
+<h2>Clientes Cadastrados:</h2>
 <div>
-    @Html.ActionLink("Cadastrar Cliente", "CadastrarCliente", "Cliente")
+    @Html.ActionLink("Cadastrar Novo Cliente", "CadastrarCliente", "Cliente")
 
     <table class="table table-hover table-striped"
            style="margin-top:30px">
@@ -29,10 +29,7 @@
             <td>@cliente.EmailCliente</td>
             <td>@cliente.SenhaCliente</td>
             <td>@cliente.AdminCliente</td>
-            <td>
-                @Html.ActionLink("Alterar", "AlterarCliente", "Cliente",
-                         new { id = cliente.IdCliente }, null)
-            </td>
+
         </tr>
         }
     </table>

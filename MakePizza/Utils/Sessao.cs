@@ -63,8 +63,8 @@ namespace MakePizza.Utils
 				HttpContext.Current.Session[CLIENTE_SESSION] = null;
 				HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] = null;
 				HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] = null;
-							   
-				return true;
+
+                return true;
 			}
 			catch (Exception)
 			{

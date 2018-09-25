@@ -1,0 +1,30 @@
+﻿@using MakePizza.Models
+@model List<Pedido>
+
+@{
+    ViewBag.Title = "Lista de Pedidos";
+}
+
+<h2>ListaPedidos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover table-striped"
+       style="margin-top:30px">
+    <tr>
+        <th>Nome do cliente</th>
+        <th>Pizzas</th>
+        <th>Total</th>
+        <th>Data do pedido</th>
+    </tr>
+    @foreach (Pedido p in Model)
+    {
+        <tr>
+            <td>@p.ClientePedido.NomeCliente</td>
+            <td>@p.PizzasPedido</td>
+            <td>@p.PrecoTotalPedido.ToString("C2")</td>
+            <td>@p.DataPedido</td>
+         </tr>
+    }
+</table>

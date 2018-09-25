@@ -3,13 +3,17 @@
 @model MakePizza.Models.Ingrediente
 
 @{
-	List<Ingrediente> Ingredientes = ViewBag.Ingredientes;
+    ViewBag.Title = "Criar Pizza";
+    List<Ingrediente> Ingredientes = ViewBag.Ingredientes;
 }
 
 @using (Html.BeginForm("AddIngredientesNaPizza", "Pizza", FormMethod.Post))
 {
 	<div class="form-horizontal">
-		<h>AddIngredientesNaPizza</h>
+		
+        <h2>
+            Selecione os ingredientes que deseja em sua pizza:
+        </h2>
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -22,12 +26,12 @@
 			}
 			<br />
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Create" class="btn btn-default" />
+				<input type="submit" value="Próximo" class="btn btn-primary" />
 			</div>
 		</div>
 	</div>
 }
 
-<div>
+<div style="text-align:center">
 	@Html.ActionLink("Voltar", "Home", "Pizza")
 </div>

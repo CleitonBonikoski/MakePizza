@@ -7,32 +7,32 @@ namespace MakePizza.Controllers
 {
     public class IngredienteController : Controller
     {
-		private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+        private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
 
-		#region Home()
-		public ActionResult Home()
+        #region Home()
+        public ActionResult Home()
         {
-			if (SessaoClienteAtual == null)
-				return RedirectToAction("Home", "Cliente");
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
 
-			return View(IngredienteDAO.RetornarIngredientes());
+            return View(IngredienteDAO.RetornarIngredientes());
         }
         #endregion
 
         #region CadastrarIngrediente()
         public ActionResult CadastrarIngrediente()
         {
-			if (SessaoClienteAtual == null)
-				return RedirectToAction("Home", "Cliente");
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
 
-			ViewBag.Categorias =
+            ViewBag.Categorias =
                 new MultiSelectList(CategoriaDAO.RetornarCategorias(),
                 "IdCategoria", "NomeCategoria");
             return View();
         }
         #endregion
 
-        #region CadastrarIngrediente(Ingrediente)
+        #region HttpPost CadastrarIngrediente(Ingrediente)
         [HttpPost]
         public ActionResult CadastrarIngrediente(Ingrediente ingrediente, int? Categorias)
         {
@@ -69,27 +69,38 @@ namespace MakePizza.Controllers
         #region AlterarIngrediente(id)
         public ActionResult AlterarIngrediente(int id)
         {
-			if (SessaoClienteAtual == null)
-				return RedirectToAction("Home", "Cliente");
+            if (SessaoClienteAtual == null)
+                return RedirectToAction("Home", "Cliente");
 
-			return View(IngredienteDAO.BuscarIngredientePorId(id));
+            ViewBag.Categorias =
+                new MultiSelectList(CategoriaDAO.RetornarCategorias(),
+                "IdCategoria", "NomeCategoria");
+
+            return View(IngredienteDAO.BuscarIngredientePorId(id));
         }
         #endregion
 
         #region HttpsPost AlterarIngrediente(IngredienteAlterado)
         [HttpPost]
-        public ActionResult AlterarIngrediente(Ingrediente ingredienteAlterado)
+        public ActionResult AlterarIngrediente(Ingrediente ingredienteAlterado, int? Categorias)
         {
+
+
+            ViewBag.Categorias = CategoriaDAO.RetornarCategorias();
+
+            ingredienteAlterado.CategoriaIngrediente = CategoriaDAO.BuscarCategoriaPorId(Categorias);
+
             Ingrediente ingredienteOriginal =
                 IngredienteDAO.BuscarIngredientePorId(ingredienteAlterado.IdIngrediente);
 
-            ingredienteOriginal.NomeIngrediente = ingredienteAlterado.NomeIngrediente;
-            ingredienteOriginal.PrecoIngrediente = ingredienteAlterado.PrecoIngrediente;
-            ingredienteOriginal.CategoriaIngrediente = ingredienteAlterado.CategoriaIngrediente;
-            ingredienteOriginal.StatusIngrediente = ingredienteAlterado.StatusIngrediente;
-
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && Categorias != null)
             {
+                ingredienteOriginal.NomeIngrediente = ingredienteAlterado.NomeIngrediente;
+                ingredienteOriginal.PrecoIngrediente = ingredienteAlterado.PrecoIngrediente;
+                ingredienteOriginal.CategoriaIngrediente = ingredienteAlterado.CategoriaIngrediente;
+                ingredienteOriginal.StatusIngrediente = ingredienteAlterado.StatusIngrediente;
+
+
                 if (IngredienteDAO.AlterarIngrediente(ingredienteOriginal))
                 {
                     return RedirectToAction("Home", "Ingrediente");
@@ -102,6 +113,7 @@ namespace MakePizza.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "Selecione uma Categoria Válida!");
                 return View(ingredienteOriginal);
             }
         }

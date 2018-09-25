@@ -3,18 +3,16 @@
 @model Pizza
 
 @{
-	ViewBag.Title = "CadastrarPizza";
+	ViewBag.Title = "Sua Pizza";
 	List<Ingrediente_Pizza> Ingredientes = ViewBag.Ingredientes;
 }
-
-<h2>CadastrarPizza</h2>
 
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
 
 	<div class="form-horizontal">
-		<h4>Pizza</h4>
+		<h3>Sua Pizza:</h3>
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 		<div class="form-group">
@@ -65,12 +63,12 @@
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Cadastrar" class="btn btn-default" />
+				<input type="submit" value="Cadastrar" class="btn btn-primary" />
 			</div>
 		</div>
 	</div>
 }
 
-<div>
+<div style="text-align:center">
 	@Html.ActionLink("Voltar", "AddIngredientesNaPizza", "Pizza")
 </div>

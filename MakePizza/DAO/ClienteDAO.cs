@@ -15,9 +15,8 @@ namespace MakePizza.DAO
         #region CadastrarCliente(Cliente)
         public static bool CadastrarCliente(Cliente cliente)
         {
-            if (BuscarClientePorNome(cliente) == null)
+            if (BuscarClientePorEmail(cliente) == null)
             {
-                cliente.AdminCliente = false;
                 contexto.Clientes.Add(cliente);
                 contexto.SaveChanges();
                 return true;
@@ -42,10 +41,11 @@ namespace MakePizza.DAO
 		#endregion
 
 		#region BuscarClientePorEmail(string)
-		public static Cliente BuscarClientePorEmail(string email)
+		public static Cliente BuscarClientePorEmail(Cliente cliente)
 		{
-			return contexto.Clientes.FirstOrDefault(_ => _.EmailCliente.Equals(email));
-		}
+            return contexto.Clientes.
+                FirstOrDefault(x => x.EmailCliente.Equals(cliente.EmailCliente));
+        }
 		#endregion
 
 		#region BuscarClientePorNome(Cliente)
