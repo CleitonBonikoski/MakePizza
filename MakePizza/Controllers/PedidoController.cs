@@ -46,7 +46,7 @@ namespace MakePizza.Controllers
 				{
 					Cliente cliente = ClienteDAO.BuscarClientePorEmail(pedido.ClientePedido);
 
-					string sessaoPedidoAtual = Sessao.ValidarSessaoPedido();
+					string sessaoPedidoAtual = Sessao.ValidarSessaoPizza_Pedido();
 
 					pedido.PrecoTotalPedido = valorTotalPedido;
 					pedido.PizzasPedido = Pizza_PedidoDAO.RetornarPizza_PedidoPorGuid(sessaoPedidoAtual);

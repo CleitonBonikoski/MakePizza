@@ -24,7 +24,7 @@
 				@Html.Label(pizza.NomePizza);
 				ValorTotalPedido += pizza.PrecoPizza;
 				<br />
-}
+			}
 			<br />
 
 			<div class="form-group">
@@ -57,4 +57,7 @@
 		</div>
 	</div>
 }
+<div>
+	@Html.ActionLink("Make new Pizza", "AddIngredientesNaPizza", "Pizza")
+</div>
 

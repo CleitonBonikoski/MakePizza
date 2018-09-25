@@ -11,36 +11,36 @@ namespace MakePizza.Controllers
 {
 	public class PizzaController : Controller
 	{
-        private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
+		private string SessaoClienteAtual = Sessao.ValidarSessaoCliente();
 
-        private string Ingrediente_Pizza_Sessao ; 
+		private string Ingrediente_Pizza_Sessao;
 
 		#region Home()
 		public ActionResult Home()
 		{
-            if (SessaoClienteAtual == null)
-                return RedirectToAction("Home", "Cliente");
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
 
-            string sessaoPizza = Sessao.CriarSessaoPizza();
+			string sessaoPizza = Sessao.CriarSessaoIngrediente_Pizza();
 			ViewBag.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
-        #endregion
+		#endregion
 
-        #region Listar Pizzas
-        public ActionResult Listar()
-        {
-            if (SessaoClienteAtual == null)
-                return RedirectToAction("Home", "Cliente");
-
-            return View();
-        }
-        #endregion
-
-        #region CadastrarPizza()
-        public ActionResult CadastrarPizza()
+		#region Listar Pizzas
+		public ActionResult Listar()
 		{
-			string sessaoPizza = Sessao.CriarSessaoPizza();
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
+
+			return View();
+		}
+		#endregion
+
+		#region CadastrarPizza()
+		public ActionResult CadastrarPizza()
+		{
+			string sessaoPizza = Sessao.CriarSessaoIngrediente_Pizza();
 			ViewBag.Ingredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 			return View();
 		}
@@ -50,9 +50,9 @@ namespace MakePizza.Controllers
 		[HttpPost]
 		public ActionResult CadastrarPizza(Pizza novaPizza)
 		{
-			string sessaoPizza = Sessao.CriarSessaoPizza();
+			string sessaoPizza = Sessao.CriarSessaoIngrediente_Pizza();
 
-			List<Ingrediente_Pizza> lstIngrediente_Pizza= Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
+			List<Ingrediente_Pizza> lstIngrediente_Pizza = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
 
 			double valorTotaldeIngredientePizza = 0;
 
@@ -63,17 +63,21 @@ namespace MakePizza.Controllers
 
 			novaPizza.PrecoPizza = valorTotaldeIngredientePizza;
 			novaPizza.GuidPizza = sessaoPizza;
-			novaPizza.GuidPedido = Sessao.CriarSessaoPedido();
+			novaPizza.GuidPedido = Sessao.CriarSessaoPizza_Pedido();
 			novaPizza.DataPizza = DateTime.Now;
 			novaPizza.lstIngredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
+
 			if (PizzaDAO.CadastrarPizza(novaPizza))
 			{
 				Pizza_Pedido pizza_Pedido = new Pizza_Pedido
 				{
 					pizza = novaPizza,
 					DataPizza_Pedido = DateTime.Now,
-					GuidPedido = Sessao.CriarSessaoPedido()			
+					GuidPedido = Sessao.CriarSessaoPizza_Pedido()
 				};
+
+
+
 				if (Pizza_PedidoDAO.CadastrarPizza_Pedido(pizza_Pedido))
 					return RedirectToAction("Home", "Pedido");
 			}
@@ -86,20 +90,20 @@ namespace MakePizza.Controllers
 		#region MostrarPizza()
 		public ActionResult MostrarPizza()
 		{
-            if (SessaoClienteAtual == null)
-                return RedirectToAction("Home", "Cliente");
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
 
-            return View();
+			return View();
 		}
 		#endregion
 
 		#region AddIngredientesNaPizza()
 		public ActionResult AddIngredientesNaPizza()
 		{
-            if (SessaoClienteAtual == null)
-                return RedirectToAction("Home", "Cliente");
+			if (SessaoClienteAtual == null)
+				return RedirectToAction("Home", "Cliente");
 
-            ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
+			ViewBag.Ingredientes = IngredienteDAO.RetornarIngredientes();
 			return View();
 		}
 		#endregion
@@ -110,7 +114,7 @@ namespace MakePizza.Controllers
 		{
 			if (IdCheckBox != null)
 			{
-				Ingrediente_Pizza_Sessao = Sessao.CriarNovaGuidSessaoPizza();
+				Ingrediente_Pizza_Sessao = Sessao.CriarNovaGuidSessaoIngrediente_Pizza();
 
 				foreach (int idIngrediente in IdCheckBox)
 				{
@@ -120,8 +124,8 @@ namespace MakePizza.Controllers
 						ingredientePizza = ingrediente,
 						DataIngrediente_Pizza = DateTime.Now,
 						GuidPizza = Ingrediente_Pizza_Sessao,
-						GuidPedido = Sessao.CriarSessaoPedido()
-						
+						GuidPedido = Sessao.CriarSessaoPizza_Pedido()
+
 					};
 					Ingrediente_PizzaDAO.CadastrarIngredientePizza(ingrediente_Pizza);
 				}

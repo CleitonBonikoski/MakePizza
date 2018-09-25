@@ -18,7 +18,7 @@ namespace MakePizza.DAO
 		{
 			try
 			{
-				contexto.Pizza_Pedidos.Add(pizza_Pedido) ;
+				contexto.Pizza_Pedidos.Add(pizza_Pedido);
 				contexto.SaveChanges();
 				return true;
 			}
@@ -30,7 +30,18 @@ namespace MakePizza.DAO
 
 		public static List<Pizza_Pedido> RetornarPizza_PedidoPorGuid(string sessaoPedidoAtual)
 		{
-			return contexto.Pizza_Pedidos.Where(_ => _.GuidPedido.Equals(sessaoPedidoAtual)).ToList();
+			try
+			{
+				if (sessaoPedidoAtual != null)
+					return contexto.Pizza_Pedidos.Where(_ => _.GuidPedido.Equals(sessaoPedidoAtual)).ToList();
+
+				return null;
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+
 		}
 
 		//public static bool AtualizarPizza_Pedido( List<Pizza_Pedido> lstPizzasConfirmadas, List<Pizza_Pedido> lstPizza_Pedidos)

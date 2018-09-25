@@ -14,7 +14,7 @@ namespace MakePizza.Utils
 		#region Session
 		private static string CLIENTE_SESSION = "IdCliente";
 
-		private static string INGREDIENTE_PIZZA_SESSION = "GuidPizza";
+		private static string INGREDIENTE_PIZZA_SESSION = "GuidPizza_Pedido";
 
 		private static string PIZZA_PEDIDO_SESSION = "GuidPedido";
 		#endregion
@@ -32,7 +32,7 @@ namespace MakePizza.Utils
 		#endregion
 
 		#region  CriarSessaoPizza()
-		public static string CriarSessaoPizza()
+		public static string CriarSessaoIngrediente_Pizza()
 		{
 			if (HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] == null)
 			{
@@ -44,7 +44,7 @@ namespace MakePizza.Utils
 		#endregion
 
 		#region  CriarNovaGuidSessaoPizza()
-		public static string CriarNovaGuidSessaoPizza()
+		public static string CriarNovaGuidSessaoIngrediente_Pizza()
 		{
 			Guid guid = Guid.NewGuid();
 			HttpContext.Current.Session[INGREDIENTE_PIZZA_SESSION] = guid;
@@ -53,7 +53,7 @@ namespace MakePizza.Utils
 		#endregion
 
 		#region  CriarSessaoPedido()
-		public static string CriarSessaoPedido()
+		public static string CriarSessaoPizza_Pedido()
 		{
 			if (HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] == null)
 			{
@@ -103,7 +103,7 @@ namespace MakePizza.Utils
 		#endregion
 
 		#region ValidarSessaoPedido()
-		public static string ValidarSessaoPedido()
+		public static string ValidarSessaoPizza_Pedido()
 		{
 			if (HttpContext.Current.Session[PIZZA_PEDIDO_SESSION] == null)
 				return null;
