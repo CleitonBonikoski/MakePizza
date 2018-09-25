@@ -51,6 +51,17 @@ namespace MakePizza.Controllers
 		public ActionResult CadastrarPizza(Pizza novaPizza)
 		{
 			string sessaoPizza = Sessao.CriarSessaoPizza();
+
+			List<Ingrediente_Pizza> lstIngrediente_Pizza= Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
+
+			double valorTotaldeIngredientePizza = 0;
+
+			foreach (var ingrediente in lstIngrediente_Pizza)
+			{
+				valorTotaldeIngredientePizza += ingrediente.ingredientePizza.PrecoIngrediente;
+			}
+
+			novaPizza.PrecoPizza = valorTotaldeIngredientePizza;
 			novaPizza.GuidPizza = sessaoPizza;
 			novaPizza.GuidPedido = Sessao.CriarSessaoPedido();
 			novaPizza.DataPizza = DateTime.Now;
@@ -67,7 +78,7 @@ namespace MakePizza.Controllers
 					return RedirectToAction("Home", "Pedido");
 			}
 
-			ViewBag.Ingredientes = Ingrediente_PizzaDAO.RetornarTodosNaSessao(sessaoPizza);
+			ViewBag.Ingredientes = lstIngrediente_Pizza;
 			return View();
 		}
 		#endregion

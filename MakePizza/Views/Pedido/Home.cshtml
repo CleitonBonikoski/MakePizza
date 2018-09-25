@@ -46,8 +46,7 @@
 			<div class="form-group">
 				@Html.LabelFor(model => model.PrecoTotalPedido, htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
-					@Html.Label(Convert.ToDouble(ValorTotalPedido).ToString("C2"));
-					@Html.EditorFor(model => model.PrecoTotalPedido, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.Label(Convert.ToDouble(ValorTotalPedido).ToString("C2"))
 					@Html.ValidationMessageFor(model => model.PrecoTotalPedido, "", new { @class = "text-danger" })
 				</div>
 			</div>

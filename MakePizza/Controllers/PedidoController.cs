@@ -28,6 +28,13 @@ namespace MakePizza.Controllers
 		{
 			List<Pizza> retornoPizzaPedido = PizzaDAO.RetornarPizzaPedido();
 
+			double valorTotalPedido = 0;
+
+			foreach (var pizza in retornoPizzaPedido)
+			{
+				valorTotalPedido += pizza.PrecoPizza;
+			}
+
 			if (lstIdPizzaConfirmado != null)
 			{
 				List<Pizza> lstPizzasConfirmadas = new List<Pizza>();
@@ -41,6 +48,7 @@ namespace MakePizza.Controllers
 
 					string sessaoPedidoAtual = Sessao.ValidarSessaoPedido();
 
+					pedido.PrecoTotalPedido = valorTotalPedido;
 					pedido.PizzasPedido = Pizza_PedidoDAO.RetornarPizza_PedidoPorGuid(sessaoPedidoAtual);
 					pedido.ClientePedido = cliente;
 					pedido.DataPedido = DateTime.Now;
