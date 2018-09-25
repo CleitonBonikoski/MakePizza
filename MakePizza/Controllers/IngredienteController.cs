@@ -97,7 +97,8 @@ namespace MakePizza.Controllers
             {
                 ingredienteOriginal.NomeIngrediente = ingredienteAlterado.NomeIngrediente;
                 ingredienteOriginal.PrecoIngrediente = ingredienteAlterado.PrecoIngrediente;
-                ingredienteOriginal.CategoriaIngrediente = ingredienteAlterado.CategoriaIngrediente;
+                ingredienteOriginal.PesoIngrediente = ingredienteAlterado.PesoIngrediente;
+				ingredienteOriginal.CategoriaIngrediente = ingredienteAlterado.CategoriaIngrediente;
                 ingredienteOriginal.StatusIngrediente = ingredienteAlterado.StatusIngrediente;
 
 

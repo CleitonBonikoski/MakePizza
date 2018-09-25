@@ -30,6 +30,9 @@ namespace MakePizza.Models
 		[Display(Name = "Status Ingrediente")]
 		public bool StatusIngrediente { get; set; }
 
+		[Display(Name = "Peso Ingrediente")]
+		public string PesoIngrediente { get; set; }
+
 		#endregion
 	}
 }

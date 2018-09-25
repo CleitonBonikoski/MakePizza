@@ -24,11 +24,18 @@
 		</div>
 	</div>
 	<div class="form-group">
+		@Html.LabelFor(model => model.PesoIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.PesoIngrediente, new { htmlAttributes = new { @class = "form-control", @placeholder = "Peso Ingrediente" } })
+			@Html.ValidationMessageFor(model => model.PesoIngrediente, "", new { @class = "text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
 		@Html.LabelFor(model => model.CategoriaIngrediente, new { @class = "control-label col-sm-2" })
-        <div class="col-sm-10">
-            @Html.DropDownList("Categorias", null,
-                    " -- SELECIONE -- ", new { @class = "form-control" })
-        </div>
+		<div class="col-sm-10">
+			@Html.DropDownList("Categorias", null,
+					" -- SELECIONE -- ", new { @class = "form-control" })
+		</div>
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(model => model.StatusIngrediente, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201809251139005_MakeDB.Designer.cs">
       <DependentUpon>201809251139005_MakeDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809251327276_AddPesoIngrediente.cs" />
+    <Compile Include="Migrations\201809251327276_AddPesoIngrediente.Designer.cs">
+      <DependentUpon>201809251327276_AddPesoIngrediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -195,6 +199,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809251139005_MakeDB.resx">
       <DependentUpon>201809251139005_MakeDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251327276_AddPesoIngrediente.resx">
+      <DependentUpon>201809251327276_AddPesoIngrediente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

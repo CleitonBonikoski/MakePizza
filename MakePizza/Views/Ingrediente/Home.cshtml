@@ -12,27 +12,29 @@
     </div>
     <table class="table table-hover table-striped"
            style="margin-top:30px">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Preço</th>
-            <th>Disponibilidade</th>
-            <th></th>
-        </tr>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Categoria</th>
+			<th>Peso</th>
+			<th>Preço</th>
+			<th>Disponibilidade</th>
+			<th></th>
+		</tr>
         @foreach (Ingrediente ingrediente in Model)
         {
-            <tr>
-                <td>@ingrediente.IdIngrediente</td>
-                <td>@ingrediente.NomeIngrediente</td>
-                <td>@ingrediente.CategoriaIngrediente.NomeCategoria</td>
-                <td>@ingrediente.PrecoIngrediente.ToString("C2")</td>
-                <td>@ingrediente.StatusIngrediente</td>
-                <td>
-                    @Html.ActionLink("Alterar", "AlterarIngrediente", "Ingrediente",
-                                 new { id = ingrediente.IdIngrediente }, null)
-                </td>
-            </tr>
+		<tr>
+			<td>@ingrediente.IdIngrediente</td>
+			<td>@ingrediente.NomeIngrediente</td>
+			<td>@ingrediente.CategoriaIngrediente.NomeCategoria</td>
+			<td>@ingrediente.PesoIngrediente</td>
+			<td>@ingrediente.PrecoIngrediente.ToString("C2")</td>
+			<td>@ingrediente.StatusIngrediente</td>
+			<td>
+				@Html.ActionLink("Alterar", "AlterarIngrediente", "Ingrediente",
+							 new { id = ingrediente.IdIngrediente }, null)
+			</td>
+		</tr>
         }
     </table>
 
