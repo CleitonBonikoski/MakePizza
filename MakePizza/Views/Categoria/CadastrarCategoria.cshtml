@@ -11,14 +11,14 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.NomeCategoria, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.NomeCategoria, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.EditorFor(model => model.NomeCategoria, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome Categoria" } })
 				@Html.ValidationMessageFor(model => model.NomeCategoria, "", new { @class = "text-danger" })
 			</div>
 		</div>
 		<div class="form-group">
 			@Html.LabelFor(model => model.DescricaoCategoria, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.DescricaoCategoria, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.EditorFor(model => model.DescricaoCategoria, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descrição Categoria" } })
 				@Html.ValidationMessageFor(model => model.DescricaoCategoria, "", new { @class = "text-danger" })
 			</div>
 		</div>
